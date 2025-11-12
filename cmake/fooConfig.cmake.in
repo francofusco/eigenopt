@@ -1,0 +1,7 @@
+@PACKAGE_INIT@
+
+# Optional: declare dependencies
+# include(CMakeFindDependencyMacro)
+# find_dependency(pkgname REQUIRED)
+
+include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
