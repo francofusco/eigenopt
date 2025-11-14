@@ -1,0 +1,21 @@
+<map id="include/EigenOpt/kernel_projection.hxx" name="include/EigenOpt/kernel_projection.hxx">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,181,45"/>
+<area shape="rect" id="Node000002" href="$kernel__projection_8hpp.html" title=" " alt="" coords="5,93,181,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,59,96,93,91,93,91,59"/>
+<area shape="rect" id="Node000003" href="$quadratic__programming_8hxx.html" title=" " alt="" coords="16,504,213,544"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="81,147,58,211,49,249,45,288,45,371,51,409,65,446,84,478,101,502,97,506,79,480,61,448,46,411,40,372,40,288,44,248,52,210,76,145"/>
+<area shape="rect" id="Node000006" href="$simplex_8hxx.html" title=" " alt="" coords="80,357,296,383"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="93,147,96,224,105,267,121,308,143,335,170,355,166,359,140,339,116,311,100,269,91,224,88,147"/>
+<area shape="rect" id="Node000008" href="$simplex__internal_8hxx.html" title=" " alt="" coords="131,181,319,221"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="135,139,198,179,195,183,133,143"/>
+<area shape="rect" id="Node000004" href="$quadratic__programming_8hpp.html" title=" " alt="" coords="16,592,213,632"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="117,558,117,592,112,592,112,558"/>
+<area shape="rect" id="Node000005" href="$readme__example_8cpp.html" title=" " alt="" coords="21,680,208,705"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="117,646,117,680,112,680,112,646"/>
+<area shape="rect" id="Node000007" href="$simplex_8hpp.html" title=" " alt="" coords="80,431,296,456"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="191,396,191,431,185,431,185,396"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="170,468,134,506,130,502,166,464"/>
+<area shape="rect" id="Node000009" href="$simplex__internal_8hpp.html" title=" " alt="" coords="131,269,319,309"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="228,235,228,269,223,269,223,235"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="213,323,196,358,191,356,208,321"/>
+</map>

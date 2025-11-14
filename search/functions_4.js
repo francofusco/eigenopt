@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reset_0',['reset',['../classfoo_1_1Counter.html#a5e4d4a9ad217c5e36bfd5c58534a16ab',1,'foo::Counter']]]
+  ['guess_0',['guess',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a2d2e4eac22ef3364b4908733daf43ca1',1,'EigenOpt::quadratic_programming::Solver']]]
 ];

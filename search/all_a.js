@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reset_0',['reset',['../classfoo_1_1Counter.html#a5e4d4a9ad217c5e36bfd5c58534a16ab',1,'foo::Counter']]]
+  ['of_20a_20page_20created_20in_20markdown_0',['Example of a Page created in MarkDown',['../md_doc_2extra_2some__page.html',1,'']]]
 ];

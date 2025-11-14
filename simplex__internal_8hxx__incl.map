@@ -1,0 +1,14 @@
+<map id="include/EigenOpt/simplex_internal.hxx" name="include/EigenOpt/simplex_internal.hxx">
+<area shape="rect" id="Node000001" title=" " alt="" coords="145,5,333,45"/>
+<area shape="rect" id="Node000002" href="$kernel__projection_8hpp.html" title=" " alt="" coords="5,93,231,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,48,149,88,146,84,209,43"/>
+<area shape="rect" id="Node000006" href="$simplex__debug_8hpp.html" title=" " alt="" coords="255,93,467,119"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="270,43,333,84,330,88,267,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="69,313,172,339"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,120,99,142,89,167,79,216,87,265,105,301,101,303,82,266,74,216,83,166,94,139,107,118"/>
+<area shape="rect" id="Node000004" href="$kernel__projection_8hxx.html" title=" " alt="" coords="98,167,261,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="130,117,162,154,158,158,126,121"/>
+<area shape="rect" id="Node000005" href="$typedefs_8hpp.html" title=" " alt="" coords="97,240,267,265"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="182,192,184,226,178,227,177,192"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="174,267,142,305,138,301,170,264"/>
+</map>

@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['count_5f_0',['count_',['../classfoo_1_1Counter.html#afe06ece82bb5783e643ade8acf80e848',1,'foo::Counter']]],
-  ['counter_1',['counter',['../classfoo_1_1Counter.html',1,'foo::Counter'],['../classfoo_1_1Counter.html#abe696bd0f608ca60b1dc3b616b1f1975',1,'foo::Counter::Counter(unsigned int max, bool autoreset)']]],
-  ['countonce_2',['countOnce',['../classfoo_1_1Counter.html#a9dac01edd554224fc6ba9b529bd82a17',1,'foo::Counter']]],
-  ['created_20in_20markdown_3',['Example of a Page created in MarkDown',['../md_doc_2extra_2some__page.html',1,'']]],
-  ['currentcount_4',['currentCount',['../classfoo_1_1Counter.html#ade2a28220eca41ce19a440664d967584',1,'foo::Counter']]]
+  ['da_0',['da',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a15df2e0b2297794af207d1193c5b0a88',1,'EigenOpt::quadratic_programming::Solver']]],
+  ['deduce_5fvariables_5fdomains_1',['deduce_variables_domains',['../namespaceEigenOpt_1_1simplex_1_1internal.html#a2d2a61a7c4ba3c3807109a931ed1aee3',1,'EigenOpt::simplex::internal']]],
+  ['draw_2',['draw',['../classApp.html#a60f9b76d40eab2ef9ae3032685eb8433',1,'App']]],
+  ['dy_3',['dy',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a7c54dd7fd4df01dc86c6afaff8e459b7',1,'EigenOpt::quadratic_programming::Solver']]]
 ];

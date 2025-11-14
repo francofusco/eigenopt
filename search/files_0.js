@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['foo_2ecpp_0',['foo.cpp',['../foo_8cpp.html',1,'']]],
-  ['foo_2ehpp_1',['foo.hpp',['../foo_8hpp.html',1,'']]],
-  ['foo_5fmain_2ecpp_2',['foo_main.cpp',['../foo__main_8cpp.html',1,'']]]
+  ['example_5fpixel_5frobot_2ecpp_0',['example_pixel_robot.cpp',['../example__pixel__robot_8cpp.html',1,'']]]
 ];

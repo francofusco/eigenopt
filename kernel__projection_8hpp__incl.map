@@ -1,0 +1,10 @@
+<map id="include/EigenOpt/kernel_projection.hpp" name="include/EigenOpt/kernel_projection.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,181,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="43,240,146,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,47,72,69,63,94,54,143,61,191,79,228,75,230,56,193,48,143,57,93,67,67,79,44"/>
+<area shape="rect" id="Node000003" href="$kernel__projection_8hxx.html" title=" " alt="" coords="72,93,235,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,44,138,81,134,84,106,47"/>
+<area shape="rect" id="Node000004" href="$typedefs_8hpp.html" title=" " alt="" coords="71,167,241,192"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="156,119,158,153,152,153,151,119"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="148,194,116,231,112,228,144,191"/>
+</map>

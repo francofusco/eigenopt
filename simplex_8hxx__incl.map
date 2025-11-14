@@ -1,0 +1,26 @@
+<map id="include/EigenOpt/simplex.hxx" name="include/EigenOpt/simplex.hxx">
+<area shape="rect" id="Node000001" title=" " alt="" coords="73,5,289,31"/>
+<area shape="rect" id="Node000002" href="$typedefs_8hpp.html" title=" " alt="" coords="57,372,228,397"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,33,103,52,57,79,38,97,22,117,12,139,8,164,8,239,11,260,18,279,43,314,75,342,108,363,105,368,72,347,39,318,13,282,5,261,3,240,3,163,7,137,18,114,34,93,54,75,100,47,144,28"/>
+<area shape="rect" id="Node000004" href="$kernel__projection_8hpp.html" title=" " alt="" coords="51,225,277,251"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,33,125,82,101,115,84,153,81,165,84,176,102,199,126,217,123,221,99,203,79,179,75,165,79,151,97,113,121,78,166,29"/>
+<area shape="rect" id="Node000006" href="$simplex__debug_8hpp.html" title=" " alt="" coords="498,225,710,251"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="277,28,354,46,393,59,431,76,479,108,524,145,588,213,584,216,520,149,476,112,428,81,391,64,352,51,276,33"/>
+<area shape="rect" id="Node000007" href="$simplex__internal_8hpp.html" title=" " alt="" coords="195,79,418,104"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="203,28,276,69,273,74,200,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="214,445,317,471"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="164,395,235,436,232,441,161,400"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="187,249,215,269,240,297,255,332,264,368,269,431,263,432,258,369,250,333,235,300,211,273,184,253"/>
+<area shape="rect" id="Node000005" href="$kernel__projection_8hxx.html" title=" " alt="" coords="63,299,225,324"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="163,252,153,286,148,285,158,250"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="146,324,146,359,140,358,141,324"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="354,102,397,120,418,133,437,150,452,171,460,190,464,237,464,313,460,338,450,361,435,380,416,398,370,425,324,443,322,439,368,420,412,393,431,377,446,358,455,336,459,312,459,237,455,191,448,174,433,154,415,138,395,125,352,107"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="277,152,336,177"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="309,104,309,138,304,138,304,104"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="361,152,423,177"/>
+<area shape="poly" id="edge11_Node000007_Node000009" title=" " alt="" coords="322,102,369,141,366,145,319,106"/>
+<area shape="rect" id="Node000010" href="$simplex__internal_8hxx.html" title=" " alt="" coords="94,152,253,177"/>
+<area shape="poly" id="edge12_Node000007_Node000010" title=" " alt="" coords="286,106,208,148,206,143,284,102"/>
+<area shape="poly" id="edge13_Node000010_Node000004" title=" " alt="" coords="174,178,170,212,165,211,169,177"/>
+<area shape="poly" id="edge14_Node000010_Node000006" title=" " alt="" coords="243,175,521,220,521,226,242,180"/>
+</map>
