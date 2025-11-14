@@ -1,22 +1,30 @@
-# add one test
-add_executable(test_foo test_foo.cpp)
-# link GTest and pthread
-target_link_libraries(test_foo
+# Linear Programming tests.
+add_executable(test_simplex test_simplex.cpp)
+
+# Link GTest and pthread
+target_link_libraries(test_simplex
   ${PROJECT_NAME}
   ${GTEST_LIBRARIES}
   pthread
 )
-# make the test runnable by ctest
-gtest_discover_tests(test_foo)
+
+# Make the test runnable by ctest. I am not using the more generic command
+# gtest_discover_tests() because for some reason it does not pass the argument
+# to the executable, thus throwing an exception.
+gtest_add_tests(TARGET test_simplex EXTRA_ARGS "${CMAKE_CURRENT_LIST_DIR}/problems")
 
 
-# add a second test, it uses "fixtures"
-add_executable(test_fixture test_fixture.cpp)
-# link GTest and pthread
-target_link_libraries(test_fixture
+# Quadratic Programming tests.
+add_executable(test_qp test_qp.cpp)
+
+# Link GTest and pthread
+target_link_libraries(test_qp
   ${PROJECT_NAME}
   ${GTEST_LIBRARIES}
   pthread
 )
-# make the test runnable by ctest
-gtest_discover_tests(test_fixture)
+
+# Make the test runnable by ctest. I am not using the more generic command
+# gtest_discover_tests() because for some reason it does not pass the argument
+# to the executable, thus throwing an exception.
+gtest_add_tests(TARGET test_qp EXTRA_ARGS "${CMAKE_CURRENT_LIST_DIR}/problems")
