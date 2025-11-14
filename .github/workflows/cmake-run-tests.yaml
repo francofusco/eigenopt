@@ -10,10 +10,10 @@ jobs:
         shell: bash
     # Set of commands to be run.
     steps:
-    # Install CMake and other dependencies (if any!).
+    # Install CMake and other dependencies.
     - name: Install dependencies
       working-directory: ${{github.workspace}}
-      run: sudo apt install cmake
+      run: sudo apt install cmake libeigen3-dev
     # Clone the repository.
     - uses: actions/checkout@v2
     # Install GTest using the script from this repo

@@ -22,7 +22,7 @@ jobs:
     # Install CMake and Doxygen.
     - name: Install dependencies
       working-directory: ${{github.workspace}}
-      run: sudo apt install cmake doxygen graphviz
+      run: sudo apt install cmake doxygen graphviz libeigen3-dev
     # Clone the repository.
     - uses: actions/checkout@v3
     # Create the build space.

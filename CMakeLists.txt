@@ -3,7 +3,7 @@
 ### Original Author: Franco FUSCO
 ### Source: github.com/francofusco/template-cmake-project
 cmake_minimum_required(VERSION 3.19.4)
-project(foo VERSION 1.0.0)
+project(EigenOpt VERSION 1.0.0)
 
 # Allow using colors in messages. Use with parsimony ;)
 include(cmake/colors.cmake)
@@ -12,73 +12,56 @@ include(cmake/colors.cmake)
 # LOCATE DEPENDENCIES #
 #######################
 
-# find_package(pkgname) # warn if not found
-# find_package(pkgname QUIET) # do not warn if not found
-# find_package(pkgname REQUIRED) # error if not found
-# find_package(pkgname 3) # compatible with this major version
-# find_package(pkgname 3.0.5) # minor and patch version is also supported
-# find_package(pkgname 1.2 EXACT) # the version must be this - no more, no less!
-
-# You can do stuff conditionally:
-# if(NOT ${pkgname_FOUND})
-#   message(STATUS "${Yellow}pkgname not found${ColourReset} - some features will not be included")
-# endif(NOT ${pkgname_FOUND})
+find_package(Eigen3 REQUIRED)
 
 
 #############
 # LIBRARIES #
 #############
 
-add_library(${PROJECT_NAME}
-  src/${PROJECT_NAME}/${PROJECT_NAME}.cpp
-  # OPTIONAL: replace the sources with 'INTERFACE' for header-only libraries:
-  #   add_library(${PROJECT_NAME} INTERFACE)
-)
+# Add a "header-only-library".
+add_library(${PROJECT_NAME} INTERFACE)
 
 target_include_directories(${PROJECT_NAME}
-  PUBLIC
+  INTERFACE
     $<INSTALL_INTERFACE:include>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  # OPTIONAL: add also private headers as follows:
-  #   PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/whatever
-  # OPTIONAL: use INTERFACE if you have a header-only library!
 )
 
-target_link_libraries(${PROJECT_NAME}
-  PUBLIC ""
-  PRIVATE ""
-  # OPTIONAL: again, use INTERFACE if you have a header-only library!
-)
+target_link_libraries(${PROJECT_NAME} INTERFACE Eigen3::Eigen)
 
 if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
-  target_compile_options(${PROJECT_NAME} PRIVATE -O0)
-  target_compile_options(${PROJECT_NAME} PRIVATE -Wall)
-  target_compile_definitions(${PROJECT_NAME} PUBLIC ${PROJECT_NAME}_MACRO)
+  # target_compile_options(${PROJECT_NAME} INTERFACE -O0)
+  # target_compile_options(${PROJECT_NAME} INTERFACE -Wall)
+  # target_compile_definitions(${PROJECT_NAME} INTERFACE ${PROJECT_NAME}_SIMPLEX_DEBUG_ON)
 elseif("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
-  target_compile_options(${PROJECT_NAME} PRIVATE -O2)
+  # target_compile_options(${PROJECT_NAME} INTERFACE -O2)
 endif()
 
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
+target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_17)
 
 
 ############
 # BINARIES #
 ############
 
-add_executable(${PROJECT_NAME}_main src/bin/${PROJECT_NAME}_main.cpp)
-target_link_libraries(${PROJECT_NAME}_main ${PROJECT_NAME})
+add_executable(readme_example src/readme_example.cpp)
+target_link_libraries(readme_example PRIVATE EigenOpt)
+
+set(PIKSEL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/piksel")
+if(EXISTS "${PIKSEL_DIR}" AND IS_DIRECTORY "${PIKSEL_DIR}")
+  message(STATUS "Found ${Green}piksel${ColourReset} directory - will compile ${Green}example_pixel_robot.cpp${ColourReset}")
+  add_subdirectory(piksel)
+  add_executable(example_pixel_robot src/example_pixel_robot.cpp)
+  target_include_directories(example_pixel_robot PRIVATE piksel/src)
+  target_link_libraries(example_pixel_robot PRIVATE piksel EigenOpt)
+endif()
 
 ###########
 # INSTALL #
 ###########
 
 include(GNUInstallDirs)
-
-# Installing binaries is easy ;)
-install(
-  TARGETS ${PROJECT_NAME}_main
-  DESTINATION bin
-)
 
 # Installing a library is a little more involved :P
 install(
@@ -132,17 +115,16 @@ export(
   FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake"
 )
 
-
-# add the possibility tu run 'make uninstall' to remove files added via 'make install'
+# add the possibility to run 'make uninstall_EigenOpt' to remove files added via 'make install'
 # NOTE: this will remove files only, and not their parent directories.
 # WARNING: this will work only if you do not play around the installed targets manually,
 # and if you do not change the install destination.
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/cmake/uninstall.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/uninstall_${PROJECT_NAME}.cmake
   IMMEDIATE @ONLY
 )
-add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake")
+add_custom_target(uninstall_${PROJECT_NAME} COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_BINARY_DIR}/uninstall_${PROJECT_NAME}.cmake")
 
 
 ###########

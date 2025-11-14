@@ -1,229 +1,204 @@
-Welcome to this template repository! :partying_face:
+# EigenOpt - Simple Optimization Algorithms using Eigen
 
-This page explains how to use this template repository to create CMake-based
-projects. It serves two purposes: it explains the reasoning behind
-the template and contains a sort of check-list of things to update when
-starting a new CMake-based project.
+[![documentation](https://github.com/francofusco/eigenopt/actions/workflows/cmake-build-doc.yaml/badge.svg)](https://francofusco.github.io/eigenopt/)
+[![Tests](https://github.com/francofusco/eigenopt/actions/workflows/cmake-run-tests.yaml/badge.svg)](https://github.com/francofusco/eigenopt/actions/workflows/cmake-run-tests.yaml)
 
-I hope you'll like it! :heart:
+During my PhD and postdoc, I became quite well-acquainted with numerical optimization. For some round-tables with fellow students, I prepared some slides and codes to illustrate how some optimization algorithms work. While most of the code was rather unpolished, the Simplex and QP optimization routines were acceptably written, and I decided to gather them here for future reference - and showcase my ability to code :computer:
 
 
-## Goals and features of this template
+```c++
+#include <EigenOpt/quadratic_programming.hpp>
+#include <Eigen/Dense>
+#include <iostream>
 
-The template has been created with medium-small sized CMake projects in mind.
-The main goal is to allow one to just write source code and to quickly be able
-to "publish" the project on a GitHub repository that includes a set of nice
-features. These can be summarized as:
+int main(int argc, char** argv) {
+  /* Solve: min (x1 + x2 - 5)^2
+   * Such that: x1 - x2 = 10
+   *       and: x1 + 4*x2 <= 0
+   */
+  // Objective and constraints in matrix form.
+  Eigen::MatrixXd Q(1, 2);  Q << 1, 1;
+  Eigen::VectorXd r(1);     r << 5;
+  Eigen::MatrixXd A(1, 2);  A << 1, -1;
+  Eigen::VectorXd b(1);     b << 10;
+  Eigen::MatrixXd C(1, 2);  C << 1, 4;
+  Eigen::VectorXd d(1);     d << 0;
+  double tolerance = 1e-6;
 
-- **Ability to install and reuse a project**
-  Users of your repository should be able to easily compile your project and
-  install it on their machine. In particular, your project should be very easy
-  to import in other CMake projects.
+  // Create the solver and setup the problem.
+  namespace qp = EigenOpt::quadratic_programming;
+  qp::Solver<double> solver(Q, r, tolerance);
+  solver.setConstraints(A, b, C, d);
 
-- **Providing local and online documentation**
-  If you document your source code with Doxygen docstrings, you can easily
-  generate an API documentation for your project and/or deploy it online on
-  GitHub pages.
+  // Solve the problem.
+  Eigen::VectorXd x;
+  solver.solve(x);
+  std::cout << "Solution: " << x.transpose() << std::endl;
+  // Prints: "Solution: 7.5  -2.5"
 
-- **Support for unit testing**
-  You will be able to implement tests which can be run locally to check the
-  correct functioning of your code. Furthermore, you can setup GitHub actions
-  that run these tests whenever you push your code to the remote repository.
+  return 0;
+}
+```
 
+The documentation for the library is available at [francofusco.github.io/eigenopt](https://francofusco.github.io/eigenopt/). Below are the instructions to build and test the code of this repository.
 
-## Structure of the template
+## Building the project
 
-The template uses a simple directory structure that should suit the needs of a
-medium-small project. The structure is the following (not alpha-sorted :wink:):
+This project should be built using CMake. Assuming that you are in the root directory of this repository, you can create a `build` directory (it will not be tracked by git since `build` has been gitignored :wink:) and move in there to compile the sources.
+
+As an example, you could build the project as follows:
 
 ```
-README.md         # This document, which you will replace with project-README.
-actual-README.md  # Quick information for users. It should replace README!
-CMakeLists.txt    # Top-level CMakeLists used to configure the project.
-# The src folder contains sources, eg, .cpp files. I like to separate the
-# sources used to build libraries and those used to create executables, but
-# you are free to use any other structure.
-src/
-  foo/
-    *.cpp
-  bin/
-    *.cpp
-# The include folder stores header files.
-include/
-  # I like to nest headers in a folder with the same name as the library.
-  # This allows you to include headers in the form
-  #     #include <foo/whatever.hpp>
-  # which makes clear from which project the header comes from!
-  foo/
-    *.hpp
-# The test folder includes the sources used for unit-testing.
-test/
-  CMakeLists.txt  # Nested CMakeLists file that declare executable test targets.
-  *.cpp
-# The doc folder contains all complementary files needed to generate your
-# awesome documentation.
-doc/
-  CMakeLists.txt  # Nested CMakeLists file that declare the 'doc' target.
-  doxyfile.in     # Doxygen file, to be configured by CMake (contains @STUFF@).
-  # I like to store additional documentation in this "extra" folder.
-  extra/
-    *.md
-    *.dox
-  # This is where CMake and Doxygen will store the generated documentation. It
-  # is gitignored to allow keeping the repository cleaner.
-  html/
-    index.html  # This is the main page for the documentation!
-    ...         # many other files are generated ;)
-# Auxiliary files to be fed to CMake
-cmake/
-  *.cmake
-  *.cmake.in
-# This is where GitHub workflows are stored.
-.github/workflows/
-  cmake-build-doc.yaml  # Generate and deploy the documentation on GitHub Pages.
-  cmake-run-tests.yaml  # Build and run tests on push (a sort of CI!).
-# This is where users should build the project. The folder does not actually
-# exist: it is the user who creates it! The location is gitignored so that
-# compiled targets do not pollute your repo.
-build/
+mkdir build && cd build
+cmake ..
+cmake --build .
 ```
 
 
-## The `CMakeLists.txt`
+## Installation
 
-To better understand what the template does, here is a very brief explanation
-of the content of the `CMakeLists.txt`.
+After a successful build, you might wish to install this project on your machine so that its binaries/libraries can be accessed by other projects. Assuming that you are in the build folder and that you have built the project via `cmake --build .`, you should be able to simply execute
 
-It starts with the usual `cmake_minimum_required()` and `project()`
-instructions. Following best practices, the required CMake version is the one
-I have installed. Feel free to test with other versions and to report your
-results :+1: The name of the project, `foo`, is of course just a place-holder
-to provide a minimal working example :wink: In the following, you can mentally
-replace `foo` with the name of your project.
+```bash
+cmake --install . # might require sudo!
+```
 
-A "section" follows, in which you can locate dependencies using `find_package`.
-I've listed in the comments some common variants to locate packages - to be
-honest, it is more a reference for myself!
+By default, the install location should be `/usr/local` and you might need root privileges to properly copy the files. If you do not have the rights (or if you prefer to install the project somewhere else for any reason) you can change the install location during the configuration step. As an example:
 
-Some commands that allow to build libraries follow. In particular, a library
-with the same name as the project, *i.e.*, `foo`, is declared and configured.
-Some properties are set for the library, once again more as a reference for
-myself. Immediately after, an executable is declared with the minimum set of
-required instructions.
+```bash
+cmake .. -DCMAKE_INSTALL_PREFIX=~/barbaz
+```
 
-It is time for the install step. The script shows how to install binaries,
-headers and the `foo` library. Note that the latter is exported for other
-projects under the prefix `foo::`. This means that other packages can refer
-to it via `foo::foo`.
+Would install the header and other compiled targets in the `barbaz` directory in your home.
 
-Finally, the instructions to create and run tests are added, as well as the
-commands to generate the documentation using Doxygen.
+If at any point you wish to "uninstall" the project, you can do it thanks to a provided CMake script. In particular, after installing the project, move into the build location and run:
 
+```bash
+cmake -P uninstall_EigenOpt.cmake # might require sudo!
+```
 
-## List of files to be modified
+:warning: **Beware of the following limitations!** The `uninstall_EigenOpt.cmake` script is very simple and limited. It reads the `install_manifest.txt` that is generated during the install step and attempts to remove, one by one, each copied target. This implies that:
+- Folders are not removed, but left empty. If you want to remove them, you have to do so manually.
+- Since the script reads `install_manifest.txt`, if you remove the build folder and/or change the installed products, the script might not correctly and completely remove all installed targets.
 
-This is a list of the most common changes that you will likely need to
-introduce in order to adapt this template repository to your project. The major
-items are summarized below and more details are included in the following
-sections.
+**TL;DR**: please, always check manually that all installed targets are removed! :sweat_smile:
 
-- Libraries and binaries in the `src` and `include` folders.
-- Tests in the `test` folder.
-- Documentation in the `doc` folder.
-- Actions contained in `.github/workflows`.
-- `README.md`.
+You are not obliged to install the project if you wish to use it in another CMake-based project. This can be useful, *e.g.*, when you work on multiple inter-dependent projects at once since you do not have to always update the installed targets. If you wish to do so, you simply need to export the environment variable `EigenOpt_DIR` that contains the path to the build location:
+
+```bash
+# Make the library visible to other CMake-based projects
+export EigenOpt_DIR="$HOME/path/to/eigenopt/build"
+```
+You can add the line above to your `.bashrc` to "make it permanent".
 
 
-### Libraries and binaries
+## Using EigenOpt in your project
 
-1. Add your own headers and sources into `include` and `src`.
-1. Update the targets in the `CMakeLists.txt` file; in particular:
-  - List the new sources (`*.cpp` files)
-  - Update the name of the targets to be compiled
-  - Link to required libraries
-  - Add definitions and options as needed
-1. Update the install step of the `CMakeLists.txt` file:
-  - Add the new binaries to be installed
-  - Update the library targets to be exported (if the name of the library does
-    not match the project name or if you have more libraries to export)
-  - If the headers are not in a directory with the same name of the project,
-    make sure to update the `install` instruction that copies the headers.
-1. Update `cmake/fooConfig.cmake.in`:
-  - Rename it, by changing `foo` into the name of your project
-  - If needed, add `find_dependency` commands to locate dependencies
+If you followed the instructions above to compile the source code and installed it (or opted for the `export EigenOpt_DIR` solution), using EigenOpt in your CMake-based project should be rather easy. First of all, locate it using any of the following:
 
+```cmake
+# choose one ;)
+find_package(EigenOpt)
+find_package(EigenOpt QUIET)
+find_package(EigenOpt REQUIRED)
+```
 
-### Unit testing
+Then, just link the `EigenOpt::EigenOpt` library to your targets, *e.g.*,
 
-There is really not much to say :wink: Simply add your test sources inside the
-`test` folder, then update `test/CMakeLists.txt`.
+```cmake
+add_executable(your_program your_source.cpp)
+target_link_libraries(your_program PRIVATE EigenOpt::EigenOpt)
+```
 
+Note that headers are "automatically" made visible to your executable, and
+there is thus no need for any of the following
 
-### Documentation
+```cmake
+include_directories(${EigenOpt_INCLUDE_DIRS})
+target_include_directories(your_program ${EigenOpt_INCLUDE_DIRS})
+```
 
-Again, there should not be much to do: the file `doc/doxyfile.in` should
-already be configured to automatically generate the documentation from all
-sources and headers in the `src` and `include` folders. In addition, it should
-look for additional documentation files inside the `doc/extra` directory. In
-particular, you can edit `main_page.md` to customize how users will be welcomed
-when opening the documentation.
-
-Nonetheless, you might be interested in editing some fields such as
-`PROJECT_BRIEF` or `PROJECT_LOGO`. If you wish to do so: :warning: please do
-*not* use the `doxywizard` (aka `doxygen-gui`) application. It would override
-some of the fields that require a yes/no value such as `GENERATE_LATEX` -
-currently, they contain CMake-substitutable variables, *e.g.*,
-`@QUIET_DOXYGEN@`.
+Indeed, when you call `find_package`, no `EigenOpt_INCLUDE_DIRS` is populated at all!
 
 
-### GitHub actions
+## Documentation
 
-Feel free to delete any of the workflows contained inside `.github/workflows`.
-Otherwise, no changes to the files should be required! :smile:
+The documentation of this project is available online
+[here](https://francofusco.github.io/eigenopt/).
 
-The only change needed will be on the online GitHub repository, once you will
-have pushed to `main` and the documentation will have been generated. You will
-have to go to the repository settings, in the "options" tab (should be the
-first one). Then, look for the "GitHub Pages" section and select, as source,
-the "gh-pages" branch that has been generated by the GitHub action. The Doxygen
-documentation should be ready at `your-gh-username.github.io/your-repo-name`
-:partying_face:
+The same documentation can also be generated locally using [Doxygen](https://www.doxygen.nl/index.html). On Ubuntu/Debian, it should be possible to install it via:
+```
+apt install doxygen graphviz doxygen-latex
+```
+Note that the package `doxygen-latex` is needed only if you want to generate a printable version of the documentation - a sort of reference manual.
 
-Also, remember that (at least as of today, March 22nd 2021):
-- GitHub actions are free for public repositories, while for private ones they
-  consume some "minutes". Check the details of your account to know how many
-  minutes you have available - however, do not worry: they should be enough if
-  you just have a couple of private projects that you update once in a while.
-- AFAIK, *GitHub Pages are always public, even for private repos!* For this
-  reason, I have added a conditional that deploys the documentation only if
-  you are pushing on `main` and if the repository is public. This is just to
-  say that if you do not see the documentation appearing on the domain
-  `your-gh-username.github.io/your-repo-name`, it might be due to this check! 
+:warning: Please, do *not* use the `doxywizard` (aka `doxygen-gui`) application to edit the Doxygen configuration file `doxyfile.in`. In fact, it contains some CMake-configurable variables (such as `@GENERATE_LATEX@`) that would be overridden by `doxywizard` - it expects them to contain either `YES` or `NO`. This would break some of the functionalities described below :sweat_smile:
 
+If Doxygen is installed on your system, a custom CMake target named `doc` will be added by default, and the documentation will be re-generated every time you build the project.
 
-### Update `README.md`
+Alternatively, to re-build the documentation only, you can call:
+```
+cmake --build . --target doc
+```
 
-Finishing touches: customize `README.md`! Replace the content of this
-`README.md` file with that of `actual-README.md`, which contains common build
-instructions for projects using this template. Of course, you can start from
-scratch and use another format - it is up to you :wink:
+To *disable* the generation of the documentation, you can pass the `BUILD_DOC=OFF` argument during the configuration step:
+```
+cmake .. -DBUILD_DOC=OFF
+```
+By default, `BUILD_DOC` will be set to `ON` if Doxygen is found on your machine and to `OFF` if the package is not detected.
 
-Few things you might want to remember to update in case you use
-`actual-README.md`:
-
-- The project name
-- The status badges (tests and documentation)
-- Brief description
-- Mentions to `foo` (note that they might appear as parts of names, such as
-  `foo_DIR`)
-- Update the `https://francofusco.github.io/template-cmake-project/` link in
-  the documentation section, to point to your repo's documentation.
+:no_entry: If you do not have Doxygen and try to set `BUILD_DOC` to `ON` anyway, CMake will send an error and exit.
 
 
-## Contributing / Crediting
+### Configuring the Documentation
 
-Feel free to provide feedback via issues and to propose improvements via pull
-requests! :relaxed:
+While running, Doxygen can be rather verbose, printing on the console every detail about what it is currently doing. While this is a good thing in general, it can become tedious to have to scroll up every time to read errors coming from the compilation of the source code. Therefore, Doxygen is instructed to limit its output to warning messages, *e.g.*, in case you forgot to document a member or if you misspelled a function's parameter. If at any moment you wish to see again the complete output produces by Doxygen, you can re-configure the project via:
+```
+cmake .. -DQUIET_DOXYGEN=NO
+```
+Similarly, if you wish to switch back to the quiet mode, use:
+```
+cmake .. -DQUIET_DOXYGEN=YES
+```
 
-Also, if you use this template, please credit me with a link to this repository
-and by keeping the credits in the beginning of `CMakeLists.txt`.
+By default, only an HTML version of the documentation is created. However, if you wish to generate a "print-friendly" version of it, you can create it thanks to LaTeX (you must have a valid distribution and pdflatex installed) via:
+```
+cmake .. -DDOXYGEN_MAKE_LATEX=YES
+```
+
+
+## Testing
+
+To check code sanity, tests can be run using [Google Test](https://github.com/google/googletest). On Ubuntu/Debian, it should be possible to install it via:
+
+```bash
+cd where/you/want/to/store/gtest/sources
+git clone https://github.com/google/googletest.git
+mkdir -p googletest/build
+cd googletest/build
+cmake ..
+cmake --build .
+cmake --install . # might require sudo!
+```
+
+If a valid GTest distribution is found on your machine, CMake will generate the target `test`. To build and run the tests, use the following:
+
+```bash
+cmake ..
+cmake --build . # build the project, tests included
+cmake --build . --target test # run the tests
+```
+
+As you can see, tests are built altogether with the other "regular" targets. If for any reason you want tests not to be built, use the `BUILD_TESTS` option:
+
+```bash
+cmake .. -DBUILD_TESTS=OFF
+```
+
+To re-enable test compilation, you can use
+
+```bash
+cmake .. -DBUILD_TESTS=ON
+```
+
+Unless specified otherwise, `BUILD_TESTS` will be set to `ON` if GTest is found on your machine and to `OFF` if the package is missing. Also note that if you pass `BUILD_TESTS=ON` and CMake is not able to find GTest on your machine, an error will be thrown.
