@@ -235,12 +235,12 @@ bool Solver<Scalar>::updateInequalities(
       if(ny > 0) {
         EigenOpt_QUADPROG_DBG("Using simplex to determine feasibility");
         std::string simplex_error;
-        if(!simplex::minimize(VectorXs::Zero(ny), Cy, (dy.array()-tol).matrix(), yk, simplex_error, tol)) {
+        if(!simplex::minimize(VectorXs::Zero(ny), Cy, dy, yk, simplex_error, tol)) {
           EigenOpt_QUADPROG_DBG("Simplex failed: " << simplex_error);
           clearConstraints();
           return false;
         }
-        if((Cy*yk-dy).maxCoeff() > 0) {
+        if((Cy*yk-dy).maxCoeff() > tol) {
           // This should not be happening, but better safe than sorry.
           EigenOpt_QUADPROG_DBG("Simplex solution is invalid: Cy*yk-dy = " << (Cy*yk-dy).transpose());
           clearConstraints();
@@ -251,7 +251,7 @@ bool Solver<Scalar>::updateInequalities(
         // This is a fully constrained problem: either xeq is a solution for the
         // original inequalities, or the constraint set as a whole is not
         // feasible.
-        if((MatrixXs(C)*xeq-VectorXs(d)).maxCoeff() > 0) {
+        if((MatrixXs(C)*xeq-VectorXs(d)).maxCoeff() > tol) {
           EigenOpt_QUADPROG_DBG("Equalities fully constrain the decision vector, but xeq is not feasible for the inequalities: C*xeq-d = " << (MatrixXs(C)*xeq-VectorXs(d)).transpose());
           clearConstraints();
           return false;
@@ -295,50 +295,94 @@ bool Solver<Scalar>::solve(Eigen::MatrixBase<D>& x) {
 template<class Scalar>
 template<class D>
 bool Solver<Scalar>::guess(Eigen::MatrixBase<D>& y) {
+  // Check if the active set determines a feasble point.
+  if(Ca.rows() > 0) {
+    // While the active set may have not changed, we still need to ensure that
+    // the matrix Ca and the vector da correspond to the current (probably
+    // changed) values of the constraints.
+    for(unsigned int i=0; i<active.size(); i++) {
+      Ca.row(i) = Cy.row(active[i]);
+      da(i) = dy(active[i]);
+    }
+    #ifdef USE_QR_INSTEAD_OF_SVD
+      VectorXd ya = Ca.fullPivHouseholderQr().solve(da);
+    #else
+      // yk = Ca.bdcSvd(Eigen::ComputeThinU|Eigen::ComputeThinV).solve(da);
+      VectorXs ya = Ca.jacobiSvd(Eigen::ComputeThinU|Eigen::ComputeThinV).solve(da);
+    #endif
+    if((Cy*ya - dy).maxCoeff() <= 0) {
+      yk = ya;
+      EigenOpt_QUADPROG_DBG("Active-set solution (yk=pinv(Ca)*da) is a feasible start");
+      return true;
+    }
+
+    // Tough luck, we need to start all over again.
+    resetActiveSet();
+  }
+
   // Check if the current point is already feasible
-  if((Cy*yk - dy).maxCoeff() < tol) {
+  if((Cy*yk - dy).maxCoeff() <= 0) {
     EigenOpt_QUADPROG_DBG("Current value of yk is a feasible start");
-    return true;
+    return initActiveSet();
   }
 
   // Check if the user-supplied value is feasible.
   if(y.rows() == ny && (Cy*y - dy).maxCoeff() <= 0) {
     EigenOpt_QUADPROG_DBG("User-supplied x is a feasible start");
     yk = y;
-    return true;
-  }
-
-  // Check if the active set determines a feasble point.
-  if(Ca.rows() > 0) {
-    #ifdef USE_QR_INSTEAD_OF_SVD
-      yk = Ca.fullPivHouseholderQr().solve(da);
-    #else
-      // yk = Ca.bdcSvd(Eigen::ComputeThinU|Eigen::ComputeThinV).solve(da);
-      yk = Ca.jacobiSvd(Eigen::ComputeThinU|Eigen::ComputeThinV).solve(da);
-    #endif
-    if((Cy*yk-dy).maxCoeff() <= 0) {
-      EigenOpt_QUADPROG_DBG("Active-set solution (yk=pinv(Ca)*da) is a feasible start");
-      return true;
-    }
+    return initActiveSet();
   }
 
   // Last resort: use the Simplex to find a feasible starting point.
   EigenOpt_QUADPROG_DBG("Using Simplex to find a feasible start");
   std::string simplex_error;
-  if(!simplex::minimize(VectorXs::Zero(ny), Cy, dy.array()-tol, yk, simplex_error, tol)) {
+  if(!simplex::minimize(VectorXs::Zero(ny), Cy, dy, yk, simplex_error, tol)) {
      // Impossible to find a valid point.
     EigenOpt_QUADPROG_DBG("Simplex failed: " << simplex_error);
     return false;
   }
-  if((Cy*yk-dy).maxCoeff() > 0) {
-    // Additional safety check, it should not be needed... but better safe than sorry!
-    EigenOpt_QUADPROG_DBG("Simplex solution is invalid: " << (Cy*yk-dy).transpose());
-    return false;
-  }
 
   // Initial point found!
+  return initActiveSet();
+}
+
+
+template<class Scalar>
+bool Solver<Scalar>::initActiveSet() {
+  eigen_assert(active.size() == 0 && "IF YOU CALLED initActiveSet(), THE ACTIVE SET SHOULD'VE BEEN EMPTY");
+  // Calulate constraints "violations".
+  VectorXs e = Cy*yk - dy;
+
+  // Both active and inactive will be filled in the next loop.
+  inactive.clear();
+  inactive.reserve(ny);
+
+  // Check which constraints are active at the current solution.
+  for(unsigned int i=0; i<e.rows(); i++) {
+    if(e(i) > tol) {
+      // The constraint has been violated.
+      return false;
+    }
+    else if(e(i) <= -tol) {
+      // Inactive constraint.
+      inactive.push_back(i);
+    }
+    else {
+      // Found an active constraint!
+      active.push_back(i);
+    }
+  }
+
+  // Copy the constraints in the active set.
+  Ca.resize(active.size(), ny);
+  da.resize(active.size());
+  for(unsigned int i=0; i<active.size(); i++) {
+    Ca.row(i) = Cy.row(active[i]);
+    da(i) = dy(active[i]);
+  }
   return true;
 }
+
 
 template<class Scalar>
 template<class D>
@@ -360,12 +404,11 @@ bool Solver<Scalar>::solveY(Eigen::MatrixBase<D>& y) {
     EigenOpt_SIMPLEX_DBG("Failed to determine feasible start for the optimization");
     return false;
   }
-
   EigenOpt_QUADPROG_DBG("Initial point set to yk = " << yk.transpose());
 
-  // number of currently active constraints
+  // Number of currently active constraints.
   int na = active.size();
-  EigenOpt_QUADPROG_DBG("There are " << na << " initially active constraints");
+  EigenOpt_QUADPROG_DBG("Starting with " << na << " active constraints");
 
 #ifdef USE_QR_INSTEAD_OF_SVD
   // Use QR factorization to find the kernel of a matrix. Given the matrix A,
@@ -387,16 +430,12 @@ bool Solver<Scalar>::solveY(Eigen::MatrixBase<D>& y) {
   VectorXs p, mu;
   double alpha;
 
-  unsigned int iters = 0;
-  while(true) {
-    if(iters++ > 1e6)
-      throw std::runtime_error("QP is taking too many iterations");
-
+  for(unsigned int iter=0; iter<1e6; iter++) {
     EigenOpt_QUADPROG_DBG("++++++++++ Beginning iteration ++++++++++");
     EigenOpt_QUADPROG_DBG("Active set: " << internal::vec2str(active));
     EigenOpt_QUADPROG_DBG("Inactive set: " << internal::vec2str(inactive));
 
-    if(na) {
+    if(na > 0) {
       EigenOpt_QUADPROG_DBG("Perform constrained minimization to find p");
 
       // solve the EQ.constrained problem
@@ -508,7 +547,7 @@ bool Solver<Scalar>::solveY(Eigen::MatrixBase<D>& y) {
       // Check if any constraint has to be deactivated.
       // For this, find the most negative Lagrange multiplier (if any).
     #ifdef USE_QR_INSTEAD_OF_SVD
-      CaT_qr.compute(Ca.transpose()); // note: I believe this is not necessary...
+      CaT_qr.compute(Ca.transpose());
       VectorXs half_mu = CaT_qr.solve(Qy.transpose() * (ry-Qy*yk));
     #else
       CaT_svd.compute(Ca.transpose());
@@ -516,8 +555,8 @@ bool Solver<Scalar>::solveY(Eigen::MatrixBase<D>& y) {
     #endif
       EigenOpt_QUADPROG_DBG("Lagrange multipliers: " << 2*half_mu.transpose());
       int idx = -1;
-      double mumin = 0;
-      for(unsigned i=0; i<na-1; i++) { // note: do not remove the last activated constraint
+      double mumin = -tol;
+      for(unsigned i=0; i<na; i++) {
         if(half_mu(i) < mumin) {
           mumin = half_mu(i);
           idx = i;
@@ -549,6 +588,8 @@ bool Solver<Scalar>::solveY(Eigen::MatrixBase<D>& y) {
       else {
         EigenOpt_QUADPROG_DBG("Lagrange multipliers are positive: found optimal solution");
         // All multipliers are non-negative: optimal solution has been reached
+        EigenOpt_QUADPROG_DBG("Active constraints violations (positive = violated):" << std::endl << (Ca*yk-da).transpose());
+        EigenOpt_QUADPROG_DBG("All constraints violations (positive = violated):" << std::endl << (Cy*yk-dy).transpose());
         y = yk;
         return true;
       }
@@ -558,10 +599,9 @@ bool Solver<Scalar>::solveY(Eigen::MatrixBase<D>& y) {
     EigenOpt_QUADPROG_DBG("Active constraints violations (positive = violated):" << std::endl << (Ca*yk-da).transpose());
     EigenOpt_QUADPROG_DBG("All constraints violations (positive = violated):" << std::endl << (Cy*yk-dy).transpose());
     EigenOpt_QUADPROG_BREAK;
-
   }
 
-  eigen_assert(false && "THIS POINT OF THE PROGRAM SHOULD NEVER BE REACHED; PLEASE CONTACT THE MAINTAINER");
+  throw std::runtime_error("Could not find a solution within maximum number of iterations");
   return false;
 }
 

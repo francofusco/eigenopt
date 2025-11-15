@@ -1,4 +1,25 @@
-/// A namespace.
-/** Long description of the namespace.
-  */
-namespace foo {}
+/// Main namespace of this project, containing all utilities.
+namespace EigenOpt {
+
+/// Contains functions to solve linear programming problems with the Simplex method.
+namespace simplex {
+
+/// Utility functions used by the Simplex algorithm.
+namespace internal {
+
+} // internal
+
+} // simplex
+
+
+/// Contains the solver used for linearly constrained quadratic optimization problems.
+namespace quadratic_programming {
+
+/// Utility functions used by the QP Solver.
+namespace internal {
+
+} // internal
+
+} // quadratic_programming
+
+} // EigenOpt

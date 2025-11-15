@@ -1,0 +1,8 @@
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});

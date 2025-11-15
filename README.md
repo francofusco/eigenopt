@@ -5,40 +5,9 @@
 
 During my PhD and postdoc, I became quite well-acquainted with numerical optimization. For some round-tables with fellow students, I prepared some slides and codes to illustrate how some optimization algorithms work. While most of the code was rather unpolished, the Simplex and QP optimization routines were acceptably written, and I decided to gather them here for future reference - and showcase my ability to code :computer:
 
+Here is an example of application for the QP solver: a mobile robot following a target while avoiding obstacles!
 
-```c++
-#include <EigenOpt/quadratic_programming.hpp>
-#include <Eigen/Dense>
-#include <iostream>
-
-int main(int argc, char** argv) {
-  /* Solve: min (x1 + x2 - 5)^2
-   * Such that: x1 - x2 = 10
-   *       and: x1 + 4*x2 <= 0
-   */
-  // Objective and constraints in matrix form.
-  Eigen::MatrixXd Q(1, 2);  Q << 1, 1;
-  Eigen::VectorXd r(1);     r << 5;
-  Eigen::MatrixXd A(1, 2);  A << 1, -1;
-  Eigen::VectorXd b(1);     b << 10;
-  Eigen::MatrixXd C(1, 2);  C << 1, 4;
-  Eigen::VectorXd d(1);     d << 0;
-  double tolerance = 1e-6;
-
-  // Create the solver and setup the problem.
-  namespace qp = EigenOpt::quadratic_programming;
-  qp::Solver<double> solver(Q, r, tolerance);
-  solver.setConstraints(A, b, C, d);
-
-  // Solve the problem.
-  Eigen::VectorXd x;
-  solver.solve(x);
-  std::cout << "Solution: " << x.transpose() << std::endl;
-  // Prints: "Solution: 7.5  -2.5"
-
-  return 0;
-}
-```
+![Target-following robot](doc/imgs/qp_bot.png)
 
 The documentation for the library is available at [francofusco.github.io/eigenopt](https://francofusco.github.io/eigenopt/). Below are the instructions to build and test the code of this repository.
 
@@ -52,6 +21,17 @@ As an example, you could build the project as follows:
 mkdir build && cd build
 cmake ..
 cmake --build .
+```
+
+To build the demo shown above, you first need to download [piksel](https://bernhardfritz.github.io/piksel):
+
+```
+cd <ROOT DIRECTORY OF EigenOpt>
+git clone --recursive https://github.com/bernhardfritz/piksel.git
+mkdir build && cd build
+cmake ..
+cmake --build .
+./example_pixel_robot
 ```
 
 

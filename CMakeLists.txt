@@ -45,16 +45,21 @@ target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_17)
 # BINARIES #
 ############
 
-add_executable(readme_example src/readme_example.cpp)
-target_link_libraries(readme_example PRIVATE EigenOpt)
+# Compile one simple example per solver.
+foreach(EXAMPLE IN ITEMS simplex_example qp_example)
+  add_executable(${EXAMPLE} src/${EXAMPLE}.cpp)
+  target_link_libraries(${EXAMPLE} PRIVATE ${PROJECT_NAME})
+endforeach()
 
+# If piksel has been downloaded, compile the robot example.
 set(PIKSEL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/piksel")
 if(EXISTS "${PIKSEL_DIR}" AND IS_DIRECTORY "${PIKSEL_DIR}")
+  find_package(VISP REQUIRED)
   message(STATUS "Found ${Green}piksel${ColourReset} directory - will compile ${Green}example_pixel_robot.cpp${ColourReset}")
   add_subdirectory(piksel)
   add_executable(example_pixel_robot src/example_pixel_robot.cpp)
-  target_include_directories(example_pixel_robot PRIVATE piksel/src)
-  target_link_libraries(example_pixel_robot PRIVATE piksel EigenOpt)
+  target_include_directories(example_pixel_robot PRIVATE piksel/src ${VISP_INCLUDE_DIRS})
+  target_link_libraries(example_pixel_robot PRIVATE piksel ${PROJECT_NAME} ${VISP_LIBRARIES})
 endif()
 
 ###########
