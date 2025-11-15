@@ -79,7 +79,7 @@ protected:
   Eigen::VectorXd d;
   Eigen::VectorXd x;
   static constexpr double solve_tolerance = 1e-9;
-  static constexpr double comp_tolerance = 1e-3;
+  static constexpr double comp_tolerance = 1e-6;
 };
 
 
@@ -103,16 +103,21 @@ TEST_P(QuadraticProgrammingTestFixture, SolveProblem) {
     ok = solver.solve(xtest);
     ASSERT_TRUE(ok);
     ASSERT_EQ(x.rows(), xtest.rows());
+    if(A.rows() > 0) {
+      ASSERT_TRUE((A*xtest-b).isZero(solve_tolerance)) << "Some constraints have been violated: abs(A*x-b)= " << (A*xtest-d).cwiseAbs().transpose();
+    }
+    if(C.rows() > 0) {
+      ASSERT_TRUE((C*xtest-d).maxCoeff() <= solve_tolerance) << "Some constraints have been violated: (C*x-d)= " << (C*xtest-d).transpose();
+    }
     double obj = (Q*x-r).norm();
     double obj_test = (Q*xtest-r).norm();
-    double qavg = Q.array().abs().mean();
     double ftol = comp_tolerance * std::max(1.0, 0.5*(obj+obj_test));
-    ASSERT_NEAR(obj, obj_test, ftol) << "Objective does not match." << std::endl << "Qavg: " << qavg << std::endl << "x (expected): " << x.transpose() << std::endl << "x (result): " << xtest.transpose();
+    ASSERT_GE(obj + ftol, obj_test) << "Objective does not match." << std::endl << "x (expected): " << x.transpose() << std::endl << "x (result): " << xtest.transpose();
   }
 }
 
 
-INSTANTIATE_TEST_SUITE_P(QuadraticProgrammingTest, QuadraticProgrammingTestFixture, testing::Range(1, 35));
+INSTANTIATE_TEST_SUITE_P(QuadraticProgrammingTest, QuadraticProgrammingTestFixture, testing::Range(1, 171));
 
 
 int main(int argc, char** argv) {

@@ -1,9 +1,21 @@
 #pragma once
 
+// EigenOpt_QUADPROG_HIGHVIS_MSG() is meant for temporary debug statements.
+// They can be helpful to pinpoint an issue, but they should later be removed
+// from the code.
+#define EigenOpt_QUADPROG_HIGHVIS_MSG(x) {std::cout << "\033[33m[DBG] " << x << "\033[m" << std::endl;}
+
 
 #ifdef EigenOpt_QUADPROG_DEBUG_ON
   #include <iostream>
-  #define EigenOpt_QUADPROG_DBG(x) {std::cout << "[DBG] " << x << std::endl;}
+
+  // EigenOpt_QUADPROG_DBG() is meant for "long-term" debug statements, i.e.,
+  // messages that will be left in the code even after testing.
+  #ifndef EigenOpt_QUADPROG_SILENCE_DBG
+    #define EigenOpt_QUADPROG_DBG(x) {std::cout << "[DBG] " << x << std::endl;}
+  #else
+    #define EigenOpt_QUADPROG_DBG(x) ;
+  #endif
 
   namespace EigenOpt {
   namespace quadratic_programming {
@@ -31,7 +43,7 @@
     } // namespace internal
     } // namespace quadratic_programming
     } // namespace EigenOpt
-    #define EigenOpt_QUADPROG_BREAK EigenOpt::::quadratic_programming::internal::breakpoint();
+    #define EigenOpt_QUADPROG_BREAK EigenOpt::quadratic_programming::internal::breakpoint();
   #else
     #define EigenOpt_QUADPROG_BREAK ;
   #endif
