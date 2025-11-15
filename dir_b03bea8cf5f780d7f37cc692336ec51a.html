@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />

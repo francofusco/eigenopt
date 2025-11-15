@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -157,9 +165,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="quadratic__programming_8hpp__dep__incl.png" border="0" usemap="#ainclude_2EigenOpt_2quadratic__programming_8hppdep" alt=""/></div>
 <map name="ainclude_2EigenOpt_2quadratic__programming_8hppdep" id="ainclude_2EigenOpt_2quadratic__programming_8hppdep">
-<area shape="rect" title=" " alt="" coords="5,5,203,45"/>
-<area shape="rect" href="readme__example_8cpp.html" title=" " alt="" coords="11,93,197,119"/>
-<area shape="poly" title=" " alt="" coords="107,59,107,93,101,93,101,59"/>
+<area shape="rect" title=" " alt="" coords="112,5,309,45"/>
+<area shape="rect" href="example__pixel__robot_8cpp.html" title="Example program showing how to use the QP solver in a robot control problem." alt="" coords="5,93,213,119"/>
+<area shape="poly" title=" " alt="" coords="177,56,126,95,123,91,174,52"/>
+<area shape="rect" href="qp__example_8cpp.html" title="Example program showing how to use the Quadratic Programming solver." alt="" coords="237,93,389,119"/>
+<area shape="poly" title=" " alt="" coords="248,52,300,91,296,95,245,56"/>
 </map>
 </div>
 </div>
@@ -174,8 +184,10 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceEigenOpt" id="r_namespaceEigenOpt"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt.html">EigenOpt</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of this project, containing all utilities. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceEigenOpt_1_1quadratic__programming" id="r_namespaceEigenOpt_1_1quadratic__programming"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1quadratic__programming.html">EigenOpt::quadratic_programming</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1quadratic__programming"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the solver used for linearly constrained quadratic optimization problems. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

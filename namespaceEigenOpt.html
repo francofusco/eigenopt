@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -102,12 +110,17 @@ $(document).ready(function(){initNavTree('namespaceEigenOpt.html',''); initResiz
   <div class="headertitle"><div class="title">EigenOpt Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Main namespace of this project, containing all utilities.  
+<a href="namespaceEigenOpt.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceEigenOpt_1_1quadratic__programming" id="r_namespaceEigenOpt_1_1quadratic__programming"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1quadratic__programming.html">quadratic_programming</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1quadratic__programming"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the solver used for linearly constrained quadratic optimization problems. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceEigenOpt_1_1simplex" id="r_namespaceEigenOpt_1_1simplex"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html">simplex</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1simplex"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains functions to solve linear programming problems with the Simplex method. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -121,7 +134,9 @@ Functions</h2></td></tr>
 <tr class="memdesc:a55371cffe586ed0df868602e76a850db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return all solutions to a linear system, using a kernel-based parameterization.  <br /></td></tr>
 <tr class="separator:a55371cffe586ed0df868602e76a850db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main namespace of this project, containing all utilities. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a55371cffe586ed0df868602e76a850db" name="a55371cffe586ed0df868602e76a850db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55371cffe586ed0df868602e76a850db">&#9670;&#160;</a></span>qr_projection()</h2>
 
@@ -163,15 +178,17 @@ template&lt;class Scalar , class D1 , class D2 &gt; </div>
 </div><div class="memdoc">
 
 <p>Return all solutions to a linear system, using a kernel-based parameterization. </p>
-<p>Given a system A*x=b, this function tries to solve it by parameterizing x as x = xeq + Z*y where xeq is a solution to the system in the least squares sense, and Z is a basis of the kernel of A, i.e., such that A*Z = 0. The function uses two QR Decompositions to compute both xeq and the kernel of A. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Given a system \(\bm{A}\bm{x}=\bm{b}\), this function tries to solve it by parameterizing \( \bm{x} \) as \( \bm{x} = \bm{x}_{eq} + \bm{Z}\bm{y} \) where \( \bm{x}_{eq} \) is the minimum-norm solution to the system in the least squares sense, and \( \bm{Z} \) is a basis of the kernel of \( \bm{A} \), i.e., such that \( \bm{A}\bm{Z}=\bm{0} \). The function uses QR factorization to compute both \( \bm{x}_{eq} \) and the kernel of \( \bm{A} \). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">A</td><td>Matrix of coefficients of the left-hand-side of the linear system. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Vector of coefficients of the right-hand-side of the linear system. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">Z</td><td>Projection matrix into the kernel of A, such that A*Z=0. Note that if the solution to the system is unique, this matrix will have zero columns. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">xeq</td><td>A solution to the system A*x=b, in the least-squares sense. To check if the solution is exact, use, e.g., (A*xeq-b).isZero(tolerance). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">Z</td><td>Projection matrix into the kernel of \( \bm{A} \), such that \( \bm{A}\bm{Z}=\bm{0} \). Note that if the solution to the system is unique, this matrix will have zero columns. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">xeq</td><td>Minimum-norm solution to the system \(\bm{A}\bm{x}=\bm{b}\). Note that this is a solution in the least-squares sense. To check if the solution is exact, use, e.g., <code>(A*xeq-b).isZero(tolerance)</code>. </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="kernel__projection_8hxx_source.html#l00038">38</a> of file <a class="el" href="kernel__projection_8hxx_source.html">kernel_projection.hxx</a>.</p>
 
 </div>
 </div>
@@ -216,15 +233,17 @@ template&lt;class Scalar , class D1 , class D2 &gt; </div>
 </div><div class="memdoc">
 
 <p>Return all solutions to a linear system, using a kernel-based parameterization. </p>
-<p>Given a system A*x=b, this function tries to solve it by parameterizing x as x = xeq + Z*y where xeq is the minimum-norm solution to the system in the least squares sense, and Z is a basis of the kernel of A, i.e., such that A*Z = 0. The function uses a Singular Value Decomposition to compute both xeq and the kernel of A. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Given a system \(\bm{A}\bm{x}=\bm{b}\), this function tries to solve it by parameterizing \( \bm{x} \) as \( \bm{x} = \bm{x}_{eq} + \bm{Z}\bm{y} \) where \( \bm{x}_{eq} \) is the minimum-norm solution to the system in the least squares sense, and \( \bm{Z} \) is a basis of the kernel of \( \bm{A} \), i.e., such that \( \bm{A}\bm{Z}=\bm{0} \). The function uses a Singular Value Decomposition to compute both \( \bm{x}_{eq} \) and the kernel of \( \bm{A} \). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">A</td><td>Matrix of coefficients of the left-hand-side of the linear system. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Vector of coefficients of the right-hand-side of the linear system. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">Z</td><td>Projection matrix into the kernel of A, such that A*Z=0. Note that if the solution to the system is unique, this matrix will have zero columns. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">xeq</td><td>Minimum-norm solution to the system A*x=b. Note that this is a solution in the least-squares sense. To check if the solution is exact, use, e.g., (A*xeq-b).isZero(tolerance). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">Z</td><td>Projection matrix into the kernel of \( \bm{A} \), such that \( \bm{A}\bm{Z}=\bm{0} \). Note that if the solution to the system is unique, this matrix will have zero columns. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">xeq</td><td>Minimum-norm solution to the system \(\bm{A}\bm{x}=\bm{b}\). Note that this is a solution in the least-squares sense. To check if the solution is exact, use, e.g., <code>(A*xeq-b).isZero(tolerance)</code>. </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="kernel__projection_8hxx_source.html#l00008">8</a> of file <a class="el" href="kernel__projection_8hxx_source.html">kernel_projection.hxx</a>.</p>
 
 </div>
 </div>

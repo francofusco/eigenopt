@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -99,15 +107,12 @@ $(document).ready(function(){initNavTree('classes.html',''); initResizable(); })
   <div class="headertitle"><div class="title">Class Index</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="qindex"><a class="qindex" href="#letter_A">A</a>&#160;|&#160;<a class="qindex" href="#letter_S">S</a>&#160;|&#160;<a class="qindex" href="#letter_V">V</a></div>
+<div class="qindex"><a class="qindex" href="#letter_S">S</a>&#160;|&#160;<a class="qindex" href="#letter_V">V</a></div>
 <div class="classindex">
 <dl class="classindex even">
-<dt class="alphachar"><a id="letter_A" name="letter_A">A</a></dt>
-<dd><a class="el" href="classApp.html">App</a></dd></dl>
-<dl class="classindex odd">
 <dt class="alphachar"><a id="letter_S" name="letter_S">S</a></dt>
 <dd><a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html">Solver</a> (<a class="el" href="namespaceEigenOpt_1_1quadratic__programming.html">EigenOpt::quadratic_programming</a>)</dd></dl>
-<dl class="classindex even">
+<dl class="classindex odd">
 <dt class="alphachar"><a id="letter_V" name="letter_V">V</a></dt>
 <dd><a class="el" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html">VariableDomain</a> (<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html">EigenOpt::simplex::internal</a>)</dd></dl>
 </div>

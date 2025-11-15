@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EigenOpt: src/readme_example.cpp File Reference</title>
+<title>EigenOpt: src/qp_example.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,6 +20,14 @@
 MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
+});
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
 });
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
@@ -70,7 +78,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('readme__example_8cpp.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('qp__example_8cpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -98,22 +106,25 @@ $(document).ready(function(){initNavTree('readme__example_8cpp.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">readme_example.cpp File Reference</div></div>
+  <div class="headertitle"><div class="title">qp_example.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Example program showing how to use the Quadratic Programming solver.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="quadratic__programming_8hpp_source.html">EigenOpt/quadratic_programming.hpp</a>&gt;</code><br />
 <code>#include &lt;Eigen/Dense&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for readme_example.cpp:</div>
+Include dependency graph for qp_example.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="readme__example_8cpp__incl.png" border="0" usemap="#asrc_2readme__example_8cpp" alt=""/></div>
-<map name="asrc_2readme__example_8cpp" id="asrc_2readme__example_8cpp">
-<area shape="rect" title=" " alt="" coords="249,5,436,31"/>
+<div class="center"><img src="qp__example_8cpp__incl.png" border="0" usemap="#asrc_2qp__example_8cpp" alt=""/></div>
+<map name="asrc_2qp__example_8cpp" id="asrc_2qp__example_8cpp">
+<area shape="rect" title="Example program showing how to use the Quadratic Programming solver." alt="" coords="267,5,419,31"/>
 <area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="269,79,416,119"/>
 <area shape="poly" title=" " alt="" coords="345,31,345,65,340,65,340,31"/>
 <area shape="rect" title=" " alt="" coords="282,768,385,793"/>
-<area shape="poly" title=" " alt="" coords="250,27,170,40,129,52,91,67,58,87,31,112,14,142,8,178,8,635,15,673,35,703,65,727,102,745,144,759,187,768,268,776,268,781,186,773,142,764,100,750,62,732,31,707,10,675,3,636,3,178,9,140,27,108,55,83,89,62,127,47,168,35,249,22"/>
+<area shape="poly" title=" " alt="" coords="267,25,184,37,141,48,100,63,63,83,34,108,15,140,8,178,8,635,15,673,35,703,65,727,102,745,144,759,187,768,268,776,268,781,186,773,142,764,100,750,62,732,31,707,10,675,3,636,3,178,10,138,30,105,60,79,98,58,139,43,183,32,266,20"/>
 <area shape="rect" title=" " alt="" coords="440,86,520,111"/>
 <area shape="poly" title=" " alt="" coords="364,29,449,77,447,81,362,33"/>
 <area shape="rect" href="typedefs_8hpp.html" title=" " alt="" coords="140,695,311,720"/>
@@ -155,13 +166,43 @@ Include dependency graph for readme_example.cpp:</div>
 <area shape="poly" title=" " alt="" coords="490,498,529,536,526,540,486,502"/>
 </map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="qp__example_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627" id="r_a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="readme__example_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627" id="r_a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="qp__example_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Example program showing how to use the Quadratic Programming solver. </p>
+<p>This is a very basic example where we use Quadratic Programming to solve the problem:  </p><p class="formulaDsp">
+\begin{equation}
+  \min (x_1 + x_2 - 5)^2 \quad \text{s.t.}\;
+  \begin{cases}
+    x_1 - x_2 = 10 \\
+    x_1 + 4 x_2 \leq 0
+  \end{cases}
+\end{equation}
+</p>
+<p>The objective and constraints, in matrix form, write as:  </p><p class="formulaDsp">
+\begin{align}
+  \mathrm{\mathbf{Q}} &amp;= \begin{bmatrix} 1 &amp; 1 \end{bmatrix}
+  &amp;&amp;
+  \mathrm{\mathbf{r}} = \begin{bmatrix} 5 \end{bmatrix}
+  \\
+  \mathrm{\mathbf{A}} &amp;= \begin{bmatrix} 1 &amp; -1 \end{bmatrix}
+  &amp;&amp;
+  \mathrm{\mathbf{b}} = \begin{bmatrix} 10 \end{bmatrix}
+  \\
+  \mathrm{\mathbf{C}} &amp;= \begin{bmatrix} 1 &amp; 4 \end{bmatrix}
+  &amp;&amp;
+  \mathrm{\mathbf{d}} = \begin{bmatrix} 0 \end{bmatrix}
+\end{align}
+</p>
+ 
+<p class="definition">Definition in file <a class="el" href="qp__example_8cpp_source.html">qp_example.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a3c04138a5bfe5d72780bb7e82a18e627" name="a3c04138a5bfe5d72780bb7e82a18e627"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&#160;</a></span>main()</h2>
 
@@ -188,6 +229,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="qp__example_8cpp_source.html#l00032">32</a> of file <a class="el" href="qp__example_8cpp_source.html">qp_example.cpp</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -195,7 +238,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="readme__example_8cpp.html">readme_example.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="qp__example_8cpp.html">qp_example.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -102,32 +110,38 @@ $(document).ready(function(){initNavTree('namespaceEigenOpt_1_1simplex.html','')
   <div class="headertitle"><div class="title">EigenOpt::simplex Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Contains functions to solve linear programming problems with the Simplex method.  
+<a href="namespaceEigenOpt_1_1simplex.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceEigenOpt_1_1simplex_1_1internal" id="r_namespaceEigenOpt_1_1simplex_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html">internal</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1simplex_1_1internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility functions used by the Simplex algorithm. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abdeb91ba24775116e419a0dde265e0ac" id="r_abdeb91ba24775116e419a0dde265e0ac"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </td></tr>
-<tr class="memitem:abdeb91ba24775116e419a0dde265e0ac"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#abdeb91ba24775116e419a0dde265e0ac">minimize</a> (const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
-<tr class="memdesc:abdeb91ba24775116e419a0dde265e0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve an inequality-constrained linear optimization problem.  <br /></td></tr>
-<tr class="separator:abdeb91ba24775116e419a0dde265e0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a282597195ac57a948f827d5ef3881428" id="r_a282597195ac57a948f827d5ef3881428"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </td></tr>
-<tr class="memitem:a282597195ac57a948f827d5ef3881428"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#a282597195ac57a948f827d5ef3881428">maximize</a> (const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
-<tr class="memdesc:a282597195ac57a948f827d5ef3881428"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve an inequality-constrained linear optimization problem.  <br /></td></tr>
-<tr class="separator:a282597195ac57a948f827d5ef3881428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5330516bcc615e0ed4db482d0a5038e7" id="r_a5330516bcc615e0ed4db482d0a5038e7"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 , class D5 , class D6 &gt; </td></tr>
 <tr class="memitem:a5330516bcc615e0ed4db482d0a5038e7"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#a5330516bcc615e0ed4db482d0a5038e7">minimize</a> (const Eigen::MatrixBase&lt; D1 &gt; &amp;f, const Eigen::MatrixBase&lt; D2 &gt; &amp;A, const Eigen::MatrixBase&lt; D3 &gt; &amp;b, const Eigen::MatrixBase&lt; D4 &gt; &amp;C, const Eigen::MatrixBase&lt; D5 &gt; &amp;d, Eigen::DenseBase&lt; D6 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
 <tr class="memdesc:a5330516bcc615e0ed4db482d0a5038e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve a constrained linear optimization problem.  <br /></td></tr>
 <tr class="separator:a5330516bcc615e0ed4db482d0a5038e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdeb91ba24775116e419a0dde265e0ac" id="r_abdeb91ba24775116e419a0dde265e0ac"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </td></tr>
+<tr class="memitem:abdeb91ba24775116e419a0dde265e0ac"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#abdeb91ba24775116e419a0dde265e0ac">minimize</a> (const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
+<tr class="memdesc:abdeb91ba24775116e419a0dde265e0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve an inequality-constrained linear optimization problem.  <br /></td></tr>
+<tr class="separator:abdeb91ba24775116e419a0dde265e0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c72b5614b5c2f52f5eeec28c64e1c42" id="r_a8c72b5614b5c2f52f5eeec28c64e1c42"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 , class D5 , class D6 &gt; </td></tr>
 <tr class="memitem:a8c72b5614b5c2f52f5eeec28c64e1c42"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#a8c72b5614b5c2f52f5eeec28c64e1c42">maximize</a> (const Eigen::MatrixBase&lt; D1 &gt; &amp;f, const Eigen::MatrixBase&lt; D2 &gt; &amp;A, const Eigen::MatrixBase&lt; D3 &gt; &amp;b, const Eigen::MatrixBase&lt; D4 &gt; &amp;C, const Eigen::MatrixBase&lt; D5 &gt; &amp;d, Eigen::DenseBase&lt; D6 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
 <tr class="memdesc:a8c72b5614b5c2f52f5eeec28c64e1c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve a constrained linear optimization problem.  <br /></td></tr>
 <tr class="separator:a8c72b5614b5c2f52f5eeec28c64e1c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a282597195ac57a948f827d5ef3881428" id="r_a282597195ac57a948f827d5ef3881428"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </td></tr>
+<tr class="memitem:a282597195ac57a948f827d5ef3881428"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#a282597195ac57a948f827d5ef3881428">maximize</a> (const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
+<tr class="memdesc:a282597195ac57a948f827d5ef3881428"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve an inequality-constrained linear optimization problem.  <br /></td></tr>
+<tr class="separator:a282597195ac57a948f827d5ef3881428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Contains functions to solve linear programming problems with the Simplex method. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a282597195ac57a948f827d5ef3881428" name="a282597195ac57a948f827d5ef3881428"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a282597195ac57a948f827d5ef3881428">&#9670;&#160;</a></span>maximize() <span class="overload">[1/2]</span></h2>
 
@@ -195,8 +209,9 @@ template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </div>
 </div><div class="memdoc">
 
 <p>Solve an inequality-constrained linear optimization problem. </p>
-<p>This function uses the Simplex method to solve the problem: max_x f*x s.t. C*x &lt;= d where f is a weight vector and the matrix C and vector d define a set of inequality constraints.</p>
-<dl class="section see"><dt>See also</dt><dd>minimize(f, C, d, x, halt_reason, small_number, large_number) </dd></dl>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceEigenOpt_1_1simplex.html#a5330516bcc615e0ed4db482d0a5038e7" title="Solve a constrained linear optimization problem.">minimize()</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="simplex_8hpp_source.html#l00161">161</a> of file <a class="el" href="simplex_8hpp_source.html">simplex.hpp</a>.</p>
 
 </div>
 </div>
@@ -271,8 +286,19 @@ template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 , class D5 
 </div><div class="memdoc">
 
 <p>Solve a constrained linear optimization problem. </p>
-<p>This function uses the Simplex method to solve the problem: max_x f*x s.t. A*x = b, C*x &lt;= d where f is a weight vector, the matrix A and vector b define a set of equality constraints, and the matrix C and vector d define a set of inequality constraints.</p>
-<dl class="section see"><dt>See also</dt><dd>minimize(f, A, b, C, d, x, halt_reason, small_number, large_number) </dd></dl>
+<p>This function uses the Simplex method to solve the problem:  </p><p class="formulaDsp">
+\begin{equation}
+  \max_{\bm{x}} \bm{f}^T \bm{x}
+  \quad\text{subject to:}\quad
+  \begin{cases}
+    \bm{A} \bm{x} = \bm{b} \\
+    \bm{C} \bm{x} \leq \bm{d}
+  \end{cases}
+\end{equation}
+</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceEigenOpt_1_1simplex.html#a5330516bcc615e0ed4db482d0a5038e7" title="Solve a constrained linear optimization problem.">minimize()</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="simplex_8hpp_source.html#l00140">140</a> of file <a class="el" href="simplex_8hpp_source.html">simplex.hpp</a>.</p>
 
 </div>
 </div>
@@ -335,34 +361,9 @@ template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </div>
 </div><div class="memdoc">
 
 <p>Solve an inequality-constrained linear optimization problem. </p>
-<p>This function uses the Simplex method to solve the problem: min_x f*x s.t. C*x &lt;= d where f is a weight vector and the matrix C and vector d define a set of inequality constraints.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Scalar</td><td>Type used for calculations in Eigen matrices and vectors. </td></tr>
-    <tr><td class="paramname">D1</td><td>Matrix type or expression (needed as Eigen uses the CRTP for templates!) - it can be safely ignored by the user, since it is deduced. </td></tr>
-    <tr><td class="paramname">D2</td><td>Like D1. </td></tr>
-    <tr><td class="paramname">D3</td><td>Like D1. </td></tr>
-    <tr><td class="paramname">D4</td><td>Like D1. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>Vector of objective coefficients. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">C</td><td>Inequality constraints matrix. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">d</td><td>Inequality constraints vector. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">x</td><td>Solution vector (modified only if a solution is actually found). </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">halt_reason</td><td>A short feedback message explaining why the optimization routine halted. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">small_number</td><td>A small positive tolerance, used to detect near-zero values. In practice, a number n will be considered positive if n &gt; small_number and negative if n &lt; -small_number. Finally, if -small_nuber &lt;= n &lt;= small_number, then n is treates as zero. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">large_number</td><td>A "large number". When constraints are not "trivially feasible" (x=0 does not satisfy the inequality C*x&lt;=d) it is necessary to first determine a feasible solution. Two methods are commonly employed:<ul>
-<li>A "two-steps" method will ignore the original objective and focus on finding a feasible point. It will focus on optimizing the original problem only after a feasible solution has been found.</li>
-<li>A "penalty" method will simultaneosly optimize the original objective and a penalty function which discourages violating the constraints. If a feasible solution exists, this method will converge to the optimal solution of the original problem, given a large enough penalty. The two-steps method is more accurate, but takes slightly longer; to use it, set large_number to a negative value. The penalty method is faster but requires a user-defined constant; set large number to a positive value to use this method. The value should be several orders of magnitude larger than the values in the objective and constraints. </li>
-</ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if an optimal solution was found, and false otherwise. The reasons for failure are an unbounded problem or an infeasible constraint set. The returned message (inside halt_reason) should provide more details about the reason for a failed optimization. </dd></dl>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceEigenOpt_1_1simplex.html#a5330516bcc615e0ed4db482d0a5038e7" title="Solve a constrained linear optimization problem.">minimize()</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="simplex_8hxx_source.html#l00015">15</a> of file <a class="el" href="simplex_8hxx_source.html">simplex.hxx</a>.</p>
 
 </div>
 </div>
@@ -437,19 +438,27 @@ template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 , class D5 
 </div><div class="memdoc">
 
 <p>Solve a constrained linear optimization problem. </p>
-<p>This function uses a projection method in conjunction with the Simplex method to solve the problem: min_x f*x s.t. A*x = b, C*x &lt;= d where f is a weight vector, the matrix A and vector b define a set of equality constraints, and the matrix C and vector d define a set of inequality constraints.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Scalar</td><td>Type used for calculations in Eigen matrices and vectors. </td></tr>
-    <tr><td class="paramname">D1</td><td>Matrix type or expression (needed as Eigen uses the CRTP for templates!) - it can be safely ignored by the user, since it is deduced. </td></tr>
-    <tr><td class="paramname">D2</td><td>Like D1. </td></tr>
-    <tr><td class="paramname">D3</td><td>Like D1. </td></tr>
-    <tr><td class="paramname">D4</td><td>Like D1. </td></tr>
-    <tr><td class="paramname">D5</td><td>Like D1. </td></tr>
-    <tr><td class="paramname">D6</td><td>Like D1. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>This function uses the Simplex method to solve the problem:  </p><p class="formulaDsp">
+\begin{equation}
+  \min_{\bm{x}} \bm{f}^T \bm{x}
+  \quad\text{subject to:}\quad
+  \begin{cases}
+    \bm{A} \bm{x} = \bm{b} \\
+    \bm{C} \bm{x} \leq \bm{d}
+  \end{cases}
+\end{equation}
+</p>
+<p> where \( \bm{f} \) is a weight vector, the matrix \( \bm{A} \) and vector \( \bm{b} \) define a set of equality constraints, and the matrix \( \bm{C} \) and vector \( \bm{d} \) define a set of inequality constraints.</p>
+<p>To obtain the solution, several steps are needed:</p><ol type="1">
+<li>Equality constraints are "removed" using \( \bm{x} = \bm{x}_{eq} + \bm{Z}\bm{y} \), where \( \bm{x}_{eq} \) is a particular solution to the equalities and \( \bm{Z} \) is a basis of the kernel of \( \bm{A} \). By substituting into the objective and inequality constraints, the problem becomes \( \min_{\bm{y}} \bm{f}_y^T \bm{y} \) subject to \( \bm{C}_y \bm{y} \leq \bm{d}_y \), where \( \bm{f}_y = \bm{f}\bm{Z} \), \( \bm{C}_y = \bm{C}\bm{Z} \) and \( \bm{d}_y = \bm{d} - \bm{C}\bm{x}_{eq} \).</li>
+<li>New variables are then introduced:<ul>
+<li>For each coordinates \( y_i \), two variables \( y_i^{(+)} \geq 0 \) and \( y_i^{(-)} \geq 0 \) are introduced. The substitution \( y_i = y_i^{(+)} - y_i^{(-)}\) is then performed.</li>
+<li>Each inequality \( \bm{c}_i^T \bm{y} \leq d_i \) with \( d_i \geq 0 \) is transformed in an equality by instroducing a slack variable \( s_i \geq 0 \). The new constraint is therefore \( \bm{c}_i^T \bm{y} + s_i = d_i \).</li>
+<li>Each inequality \( \bm{c}_i^T \bm{y} \leq d_i \) with \( d_i &lt; 0 \) is transformed in an equality by instroducing a slack variable \( s_i \geq 0 \) and an artificial variable \( p_i \geq 0 \). The new constraint is therefore \( - \bm{c}_i^T \bm{y} - s_i + p_i = -d_i \).</li>
+</ul>
+</li>
+<li>The problem has been transformed into the canonical form expected by the Simplex method, i.e., all decision variables are non-negative and all constraints are equalities that can be expressed as \( \bm{M}\bm{x}_{n} + \bm{x}_{b} = \bm{\delta} \), where \( \bm{x}_{b} \) is a subset of the new decision variables, labelled as "basic variables" ( \( \bm{x}_{n} \) are all remaining, "non-basic" variables). Initially, the basic vector consists in all artificial variables plus the slack variables for the constraint with positive right-hand side. Pivoting operations can now be performed to solve the problem.</li>
+</ol>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>Vector of objective coefficients. </td></tr>
@@ -459,19 +468,18 @@ template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 , class D5 
     <tr><td class="paramdir">[in]</td><td class="paramname">d</td><td>Inequality constraints vector. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">x</td><td>Solution vector (modified only if a solution is actually found). </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">halt_reason</td><td>A short feedback message explaining why the optimization routine halted. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">small_number</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">small_number</td><td>A small positive tolerance, used to detect near-zero values. In practice, a number <code>n</code> will be considered positive if <code>n &gt; small_number</code> and negative if <code>n &lt; -small_number</code>. Finally, if `<code>-small_nuber &lt;= n &lt;= small_number</code>, then <code>n</code> is treates as zero. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">large_number</td><td>A "large number". When constraints are not "trivially feasible" ( \( \bm{x}=\bm{0} \) does not satisfy the inequality \( \bm{C}\bm{x}\leq\bm{d} \)) it is necessary to first determine a feasible solution. Two methods are commonly employed:<ul>
+<li>A "two-steps" method will ignore the original objective and focus on finding a feasible point. It will focus on optimizing the original problem only after a feasible solution has been found.</li>
+<li>A "penalty" method will simultaneosly optimize the original objective and a penalty function which discourages violating the constraints. If a feasible solution exists, this method will converge to the optimal solution of the original problem, given a large enough penalty.</li>
+</ul>
+The two-steps method is more accurate, but takes slightly longer; to use it, set <code>large_number</code> to a negative value. The penalty method is faster but requires a user-defined constant; set <code>large_number</code> to a positive value to use this method. The value should be several orders of magnitude larger than the values in the objective and constraints. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceEigenOpt_1_1simplex.html#abdeb91ba24775116e419a0dde265e0ac" title="Solve an inequality-constrained linear optimization problem.">minimize()</a>. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">large_number</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceEigenOpt_1_1simplex.html#abdeb91ba24775116e419a0dde265e0ac" title="Solve an inequality-constrained linear optimization problem.">minimize()</a>. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>true if an optimal solution was found, and false otherwise. The reasons for failure are an unbounded problem or an infeasible constraint set. The returned message (inside halt_reason) should provide more details about the reason for a failed optimization. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="simplex_8hxx_source.html#l00152">152</a> of file <a class="el" href="simplex_8hxx_source.html">simplex.hxx</a>.</p>
 
 </div>
 </div>

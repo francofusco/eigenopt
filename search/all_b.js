@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['page_0',['Main Page',['../index.html',1,'']]],
-  ['page_20created_20in_20markdown_1',['Example of a Page created in MarkDown',['../md_doc_2extra_2some__page.html',1,'']]],
-  ['penalty_5fmethod_2',['penalty_method',['../namespaceEigenOpt_1_1simplex_1_1internal.html#ad865f397ee5b5e611f4ea3b56ebf3dae',1,'EigenOpt::simplex::internal']]],
-  ['pivot_3',['pivot',['../namespaceEigenOpt_1_1simplex_1_1internal.html#a2651870dbc8202ea6781c632c9a8627f',1,'EigenOpt::simplex::internal']]]
+  ['r_0',['r',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a4eb0ea707d32b2be8e0aee756446a316',1,'EigenOpt::quadratic_programming::Solver']]],
+  ['resetactiveset_1',['resetActiveSet',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a751b24667e336dea5f4b650881ba8e1d',1,'EigenOpt::quadratic_programming::Solver']]],
+  ['ry_2',['ry',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a4dc35ee201c5c82ddafcf01f026d2e4d',1,'EigenOpt::quadratic_programming::Solver']]]
 ];

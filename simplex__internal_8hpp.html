@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -138,17 +146,21 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="simplex__internal_8hpp__dep__incl.png" border="0" usemap="#ainclude_2EigenOpt_2simplex__internal_8hppdep" alt=""/></div>
 <map name="ainclude_2EigenOpt_2simplex__internal_8hppdep" id="ainclude_2EigenOpt_2simplex__internal_8hppdep">
-<area shape="rect" title=" " alt="" coords="19,5,207,45"/>
-<area shape="rect" href="simplex_8hxx.html" title=" " alt="" coords="5,93,221,119"/>
-<area shape="poly" title=" " alt="" coords="116,59,116,93,111,93,111,59"/>
-<area shape="rect" href="simplex_8hpp.html" title=" " alt="" coords="5,167,221,192"/>
-<area shape="poly" title=" " alt="" coords="116,132,116,167,111,167,111,132"/>
-<area shape="rect" href="quadratic__programming_8hxx.html" title=" " alt="" coords="15,240,212,280"/>
-<area shape="poly" title=" " alt="" coords="116,206,116,240,111,240,111,206"/>
-<area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="15,328,212,368"/>
-<area shape="poly" title=" " alt="" coords="116,294,116,328,111,328,111,294"/>
-<area shape="rect" href="readme__example_8cpp.html" title=" " alt="" coords="20,416,207,441"/>
-<area shape="poly" title=" " alt="" coords="116,382,116,416,111,416,111,382"/>
+<area shape="rect" title=" " alt="" coords="225,5,413,45"/>
+<area shape="rect" href="simplex_8hxx.html" title=" " alt="" coords="211,93,427,119"/>
+<area shape="poly" title=" " alt="" coords="321,59,321,93,316,93,316,59"/>
+<area shape="rect" href="simplex_8hpp.html" title=" " alt="" coords="211,167,427,192"/>
+<area shape="poly" title=" " alt="" coords="321,132,321,167,316,167,316,132"/>
+<area shape="rect" href="quadratic__programming_8hxx.html" title=" " alt="" coords="112,240,309,280"/>
+<area shape="poly" title=" " alt="" coords="293,202,238,242,235,238,290,198"/>
+<area shape="rect" href="simplex__example_8cpp.html" title="Example program showing how to use the Simplex solver." alt="" coords="334,247,522,273"/>
+<area shape="poly" title=" " alt="" coords="348,198,413,245,410,249,345,202"/>
+<area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="112,328,309,368"/>
+<area shape="poly" title=" " alt="" coords="213,294,213,328,208,328,208,294"/>
+<area shape="rect" href="example__pixel__robot_8cpp.html" title="Example program showing how to use the QP solver in a robot control problem." alt="" coords="5,416,213,441"/>
+<area shape="poly" title=" " alt="" coords="177,379,126,418,123,414,174,375"/>
+<area shape="rect" href="qp__example_8cpp.html" title="Example program showing how to use the Quadratic Programming solver." alt="" coords="237,416,389,441"/>
+<area shape="poly" title=" " alt="" coords="248,375,300,414,296,418,245,379"/>
 </map>
 </div>
 </div>
@@ -163,10 +175,13 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceEigenOpt" id="r_namespaceEigenOpt"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt.html">EigenOpt</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of this project, containing all utilities. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceEigenOpt_1_1simplex" id="r_namespaceEigenOpt_1_1simplex"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html">EigenOpt::simplex</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1simplex"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains functions to solve linear programming problems with the Simplex method. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceEigenOpt_1_1simplex_1_1internal" id="r_namespaceEigenOpt_1_1simplex_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html">EigenOpt::simplex::internal</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1simplex_1_1internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility functions used by the Simplex algorithm. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -177,11 +192,11 @@ Functions</h2></td></tr>
 <tr class="separator:a2d2a61a7c4ba3c3807109a931ed1aee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a023f64ee8724d3702a37a25cbac476e2" id="r_a023f64ee8724d3702a37a25cbac476e2"><td class="memTemplParams" colspan="2">template&lt;class Scalar &gt; </td></tr>
 <tr class="memitem:a023f64ee8724d3702a37a25cbac476e2"><td class="memTemplItemLeft" align="right" valign="top">Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">EigenOpt::simplex::internal::transformation_matrix_from_domains</a> (const std::vector&lt; <a class="el" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html">VariableDomain</a> &gt; &amp;domains)</td></tr>
-<tr class="memdesc:a023f64ee8724d3702a37a25cbac476e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate a transformation matrix so that x=T*w, w&gt;=0.  <br /></td></tr>
+<tr class="memdesc:a023f64ee8724d3702a37a25cbac476e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate a transformation matrix so that \(\bm{x}=\bm{T}\bm{w}\), \(w \geq 0\).  <br /></td></tr>
 <tr class="separator:a023f64ee8724d3702a37a25cbac476e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c008fc16c1272793272a84be35eb851" id="r_a7c008fc16c1272793272a84be35eb851"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">class</a> <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">Scalar</a> &gt; </td></tr>
 <tr class="memitem:a7c008fc16c1272793272a84be35eb851"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">bool</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7c008fc16c1272793272a84be35eb851">EigenOpt::simplex::internal::transformation_matrix</a> (<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">const</a> Eigen::Matrix&lt; <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">Scalar</a>, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">C</a>, <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">const</a> Eigen::Matrix&lt; <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">Scalar</a>, Eigen::Dynamic, 1 &gt; &amp;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">d</a>, <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">const</a> <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">Scalar</a> &amp;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">small_number</a>, Eigen::Matrix&lt; <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">Scalar</a>, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">T</a>, std::string &amp;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">halt_reason</a>)</td></tr>
-<tr class="memdesc:a7c008fc16c1272793272a84be35eb851"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate a transformation matrix so that x=T*w, w&gt;=0.  <br /></td></tr>
+<tr class="memdesc:a7c008fc16c1272793272a84be35eb851"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate a transformation matrix so that \(\bm{x}=\bm{T}\bm{w}\), \(w \geq 0\).  <br /></td></tr>
 <tr class="separator:a7c008fc16c1272793272a84be35eb851"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d948c25bc5bbe0d1fac2a38b2650d62" id="r_a7d948c25bc5bbe0d1fac2a38b2650d62"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">class</a> <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">Scalar</a> &gt; </td></tr>
 <tr class="memitem:a7d948c25bc5bbe0d1fac2a38b2650d62"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7d948c25bc5bbe0d1fac2a38b2650d62">EigenOpt::simplex::internal::create_tableau</a> (<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">const</a> Eigen::Matrix&lt; <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">Scalar</a>, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">C</a>, <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">const</a> Eigen::Matrix&lt; <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">Scalar</a>, Eigen::Dynamic, 1 &gt; &amp;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">d</a>, Eigen::Matrix&lt; <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">Scalar</a>, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">tableau</a>, std::vector&lt; <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">int</a> &gt; &amp;<a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">basic_variables</a>)</td></tr>

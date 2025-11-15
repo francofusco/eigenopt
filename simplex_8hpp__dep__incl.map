@@ -1,9 +1,13 @@
 <map id="include/EigenOpt/simplex.hpp" name="include/EigenOpt/simplex.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,221,31"/>
-<area shape="rect" id="Node000002" href="$quadratic__programming_8hxx.html" title=" " alt="" coords="15,79,212,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,44,116,79,111,79,111,44"/>
-<area shape="rect" id="Node000003" href="$quadratic__programming_8hpp.html" title=" " alt="" coords="15,167,212,207"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="116,133,116,166,111,166,111,133"/>
-<area shape="rect" id="Node000004" href="$readme__example_8cpp.html" title=" " alt="" coords="20,255,207,280"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="116,220,116,254,111,254,111,220"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="211,5,427,31"/>
+<area shape="rect" id="Node000002" href="$quadratic__programming_8hxx.html" title=" " alt="" coords="112,79,309,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,41,238,81,235,76,290,37"/>
+<area shape="rect" id="Node000006" href="$simplex__example_8cpp.html" title="Example program showing how to use the Simplex solver." alt="" coords="334,86,522,111"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="348,37,413,84,410,88,345,41"/>
+<area shape="rect" id="Node000003" href="$quadratic__programming_8hpp.html" title=" " alt="" coords="112,167,309,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="213,133,213,166,208,166,208,133"/>
+<area shape="rect" id="Node000004" href="$example__pixel__robot_8cpp.html" title="Example program showing how to use the QP solver in a robot control problem." alt="" coords="5,255,213,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="177,217,126,256,123,252,174,213"/>
+<area shape="rect" id="Node000005" href="$qp__example_8cpp.html" title="Example program showing how to use the Quadratic Programming solver." alt="" coords="237,255,389,280"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="248,213,300,252,296,256,245,217"/>
 </map>

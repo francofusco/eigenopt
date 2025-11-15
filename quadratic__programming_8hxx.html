@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -150,11 +158,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="quadratic__programming_8hxx__dep__incl.png" border="0" usemap="#ainclude_2EigenOpt_2quadratic__programming_8hxxdep" alt=""/></div>
 <map name="ainclude_2EigenOpt_2quadratic__programming_8hxxdep" id="ainclude_2EigenOpt_2quadratic__programming_8hxxdep">
-<area shape="rect" title=" " alt="" coords="5,5,203,45"/>
-<area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="5,93,203,133"/>
-<area shape="poly" title=" " alt="" coords="107,59,107,93,101,93,101,59"/>
-<area shape="rect" href="readme__example_8cpp.html" title=" " alt="" coords="11,181,197,207"/>
-<area shape="poly" title=" " alt="" coords="107,147,107,181,101,181,101,147"/>
+<area shape="rect" title=" " alt="" coords="112,5,309,45"/>
+<area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="112,93,309,133"/>
+<area shape="poly" title=" " alt="" coords="213,59,213,93,208,93,208,59"/>
+<area shape="rect" href="example__pixel__robot_8cpp.html" title="Example program showing how to use the QP solver in a robot control problem." alt="" coords="5,181,213,207"/>
+<area shape="poly" title=" " alt="" coords="177,144,126,183,123,179,174,140"/>
+<area shape="rect" href="qp__example_8cpp.html" title="Example program showing how to use the Quadratic Programming solver." alt="" coords="237,181,389,207"/>
+<area shape="poly" title=" " alt="" coords="248,140,300,179,296,183,245,144"/>
 </map>
 </div>
 </div>
@@ -163,8 +173,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceEigenOpt" id="r_namespaceEigenOpt"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt.html">EigenOpt</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of this project, containing all utilities. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceEigenOpt_1_1quadratic__programming" id="r_namespaceEigenOpt_1_1quadratic__programming"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1quadratic__programming.html">EigenOpt::quadratic_programming</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1quadratic__programming"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the solver used for linearly constrained quadratic optimization problems. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

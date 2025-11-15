@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['main_0',['main',['../example__pixel__robot_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;example_pixel_robot.cpp'],['../readme__example_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;readme_example.cpp']]],
-  ['main_20page_1',['Main Page',['../index.html',1,'']]],
-  ['main_5fpage_2emd_2',['main_page.md',['../main__page_8md.html',1,'']]],
-  ['markdown_3',['Example of a Page created in MarkDown',['../md_doc_2extra_2some__page.html',1,'']]],
-  ['maximize_4',['maximize',['../namespaceEigenOpt_1_1simplex.html#a282597195ac57a948f827d5ef3881428',1,'EigenOpt::simplex::maximize(const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)'],['../namespaceEigenOpt_1_1simplex.html#a8c72b5614b5c2f52f5eeec28c64e1c42',1,'EigenOpt::simplex::maximize(const Eigen::MatrixBase&lt; D1 &gt; &amp;f, const Eigen::MatrixBase&lt; D2 &gt; &amp;A, const Eigen::MatrixBase&lt; D3 &gt; &amp;b, const Eigen::MatrixBase&lt; D4 &gt; &amp;C, const Eigen::MatrixBase&lt; D5 &gt; &amp;d, Eigen::DenseBase&lt; D6 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)']]],
-  ['me_5',['me',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#ab00d435bcb2fb3ec380aef3c08c17cd6',1,'EigenOpt::quadratic_programming::Solver']]],
-  ['mi_6',['mi',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a4c43cdc3d580d505cee9206ae48c8435',1,'EigenOpt::quadratic_programming::Solver']]],
-  ['minimize_7',['minimize',['../namespaceEigenOpt_1_1simplex.html#abdeb91ba24775116e419a0dde265e0ac',1,'EigenOpt::simplex::minimize(const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)'],['../namespaceEigenOpt_1_1simplex.html#a5330516bcc615e0ed4db482d0a5038e7',1,'EigenOpt::simplex::minimize(const Eigen::MatrixBase&lt; D1 &gt; &amp;f, const Eigen::MatrixBase&lt; D2 &gt; &amp;A, const Eigen::MatrixBase&lt; D3 &gt; &amp;b, const Eigen::MatrixBase&lt; D4 &gt; &amp;C, const Eigen::MatrixBase&lt; D5 &gt; &amp;d, Eigen::DenseBase&lt; D6 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)']]]
+  ['namespaces_2edox_0',['namespaces.dox',['../namespaces_8dox.html',1,'']]],
+  ['non_5fnegative_1',['non_negative',['../structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a793f7e97f547f4eb171a923ead43887f',1,'EigenOpt::simplex::internal::VariableDomain']]],
+  ['non_5fpositive_2',['non_positive',['../structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a552e541b1ad0cac78f5aff01aad1ecc5',1,'EigenOpt::simplex::internal::VariableDomain']]],
+  ['nr_3',['nr',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a40b283d4330c939d1fd453bc7c656761',1,'EigenOpt::quadratic_programming::Solver']]],
+  ['nx_4',['nx',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a8f62bd80ac256269b9f4920ef82e065d',1,'EigenOpt::quadratic_programming::Solver']]],
+  ['ny_5',['ny',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a84d2839ba77414cb887e2348dc39743f',1,'EigenOpt::quadratic_programming::Solver']]]
 ];

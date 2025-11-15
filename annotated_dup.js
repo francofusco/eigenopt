@@ -9,6 +9,5 @@ var annotated_dup =
           [ "VariableDomain", "structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html", "structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain" ]
         ] ]
       ] ]
-    ] ],
-    [ "App", "classApp.html", "classApp" ]
+    ] ]
 ];

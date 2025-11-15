@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -96,7 +104,7 @@ $(document).ready(function(){initNavTree('dir_68267d1309a1af8e8297ef4c3efbcdba.h
 </div>
 
 <div class="contents">
-<h3>src &rarr; include Relation</h3><table class="dirtab"><tr class="dirtab"><th class="dirtab">File in src</th><th class="dirtab">Includes file in include</th></tr><tr class="dirtab"><td class="dirtab"><a class="el" href="readme__example_8cpp.html">readme_example.cpp</a></td><td class="dirtab"><a class="el" href="dir_b03bea8cf5f780d7f37cc692336ec51a.html">EigenOpt</a>&#160;/&#160;<a class="el" href="quadratic__programming_8hpp.html">quadratic_programming.hpp</a></td></tr></table></div><!-- contents -->
+<h3>src &rarr; include Relation</h3><table class="dirtab"><tr class="dirtab"><th class="dirtab">File in src</th><th class="dirtab">Includes file in include</th></tr><tr class="dirtab"><td class="dirtab"><a class="el" href="example__pixel__robot_8cpp.html">example_pixel_robot.cpp</a></td><td class="dirtab"><a class="el" href="dir_b03bea8cf5f780d7f37cc692336ec51a.html">EigenOpt</a>&#160;/&#160;<a class="el" href="kernel__projection_8hpp.html">kernel_projection.hpp</a></td></tr><tr class="dirtab"><td class="dirtab"><a class="el" href="example__pixel__robot_8cpp.html">example_pixel_robot.cpp</a></td><td class="dirtab"><a class="el" href="dir_b03bea8cf5f780d7f37cc692336ec51a.html">EigenOpt</a>&#160;/&#160;<a class="el" href="quadratic__programming_8hpp.html">quadratic_programming.hpp</a></td></tr><tr class="dirtab"><td class="dirtab"><a class="el" href="qp__example_8cpp.html">qp_example.cpp</a></td><td class="dirtab"><a class="el" href="dir_b03bea8cf5f780d7f37cc692336ec51a.html">EigenOpt</a>&#160;/&#160;<a class="el" href="quadratic__programming_8hpp.html">quadratic_programming.hpp</a></td></tr><tr class="dirtab"><td class="dirtab"><a class="el" href="simplex__example_8cpp.html">simplex_example.cpp</a></td><td class="dirtab"><a class="el" href="dir_b03bea8cf5f780d7f37cc692336ec51a.html">EigenOpt</a>&#160;/&#160;<a class="el" href="simplex_8hpp.html">simplex.hpp</a></td></tr></table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

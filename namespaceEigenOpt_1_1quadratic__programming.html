@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -97,18 +105,30 @@ $(document).ready(function(){initNavTree('namespaceEigenOpt_1_1quadratic__progra
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle"><div class="title">EigenOpt::quadratic_programming Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Contains the solver used for linearly constrained quadratic optimization problems.  
+<a href="namespaceEigenOpt_1_1quadratic__programming.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceEigenOpt_1_1quadratic__programming_1_1internal" id="r_namespaceEigenOpt_1_1quadratic__programming_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1quadratic__programming_1_1internal.html">internal</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1quadratic__programming_1_1internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility functions used by the QP <a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html" title="Quadratic Programming solver using active set and null-space projections.">Solver</a>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html">Solver</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quadratic Programming solver using active set and null-space projections.  <a href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Contains the solver used for linearly constrained quadratic optimization problems. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

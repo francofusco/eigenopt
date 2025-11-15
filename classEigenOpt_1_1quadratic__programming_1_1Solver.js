@@ -5,6 +5,7 @@ var classEigenOpt_1_1quadratic__programming_1_1Solver =
     [ "clearConstraints", "classEigenOpt_1_1quadratic__programming_1_1Solver.html#a940a52f7734b6500b40ba3d9bd05ee7f", null ],
     [ "EigenOptTypedefs", "classEigenOpt_1_1quadratic__programming_1_1Solver.html#a74af3539fd00e4801f199072b27fb6ca", null ],
     [ "guess", "classEigenOpt_1_1quadratic__programming_1_1Solver.html#a2d2e4eac22ef3364b4908733daf43ca1", null ],
+    [ "initActiveSet", "classEigenOpt_1_1quadratic__programming_1_1Solver.html#aba79a879463e16b3bfc61b230ac366f1", null ],
     [ "resetActiveSet", "classEigenOpt_1_1quadratic__programming_1_1Solver.html#a751b24667e336dea5f4b650881ba8e1d", null ],
     [ "setConstraints", "classEigenOpt_1_1quadratic__programming_1_1Solver.html#a984361820d413dd4496b5c9ffc083f0f", null ],
     [ "setConstraints", "classEigenOpt_1_1quadratic__programming_1_1Solver.html#a5dfcda018d166ebc4ff0728c132bc6f2", null ],

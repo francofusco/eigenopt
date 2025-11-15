@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -97,7 +105,7 @@ $(document).ready(function(){initNavTree('globals_func.html',''); initResizable(
 
 <div class="contents">
 <div class="textblock">Here is a list of all functions with links to the files they belong to:</div><ul>
-<li>main()&#160;:&#160;<a class="el" href="example__pixel__robot_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">example_pixel_robot.cpp</a>, <a class="el" href="readme__example_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">readme_example.cpp</a></li>
+<li>main()&#160;:&#160;<a class="el" href="qp__example_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">qp_example.cpp</a>, <a class="el" href="simplex__example_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">simplex_example.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

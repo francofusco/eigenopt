@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -117,8 +125,9 @@ $(document).ready(function(){initNavTree('files.html',''); initResizable(); });
 <tr id="row_1_0_9_" class="odd"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><a href="simplex__internal_8hxx_source.html"><span class="icondoc"></span></a><a class="el" href="simplex__internal_8hxx.html" target="_self">simplex_internal.hxx</a></td><td class="desc"></td></tr>
 <tr id="row_1_0_10_" class="even"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><a href="typedefs_8hpp_source.html"><span class="icondoc"></span></a><a class="el" href="typedefs_8hpp.html" target="_self">typedefs.hpp</a></td><td class="desc"></td></tr>
 <tr id="row_2_" class="odd"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_2_" class="arrow" onclick="toggleFolder('2_')">&#9660;</span><span id="img_2_" class="iconfopen" onclick="toggleFolder('2_')">&#160;</span><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" target="_self">src</a></td><td class="desc"></td></tr>
-<tr id="row_2_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="example__pixel__robot_8cpp.html" target="_self">example_pixel_robot.cpp</a></td><td class="desc">Example program showing how to use the QP solver in a robot control problem </td></tr>
-<tr id="row_2_1_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icondoc"></span><a class="el" href="readme__example_8cpp.html" target="_self">readme_example.cpp</a></td><td class="desc"></td></tr>
+<tr id="row_2_0_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="example__pixel__robot_8cpp_source.html"><span class="icondoc"></span></a><a class="el" href="example__pixel__robot_8cpp.html" target="_self">example_pixel_robot.cpp</a></td><td class="desc">Example program showing how to use the QP solver in a robot control problem </td></tr>
+<tr id="row_2_1_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="qp__example_8cpp_source.html"><span class="icondoc"></span></a><a class="el" href="qp__example_8cpp.html" target="_self">qp_example.cpp</a></td><td class="desc">Example program showing how to use the Quadratic Programming solver </td></tr>
+<tr id="row_2_2_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="simplex__example_8cpp_source.html"><span class="icondoc"></span></a><a class="el" href="simplex__example_8cpp.html" target="_self">simplex_example.cpp</a></td><td class="desc">Example program showing how to use the Simplex solver </td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->

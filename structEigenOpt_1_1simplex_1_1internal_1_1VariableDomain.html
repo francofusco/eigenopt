@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -111,10 +119,10 @@ $(document).ready(function(){initNavTree('structEigenOpt_1_1simplex_1_1internal_
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a793f7e97f547f4eb171a923ead43887f" id="r_a793f7e97f547f4eb171a923ead43887f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a793f7e97f547f4eb171a923ead43887f">non_negative</a> = <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">false</a></td></tr>
-<tr class="memdesc:a793f7e97f547f4eb171a923ead43887f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, x&gt;=0.  <br /></td></tr>
+<tr class="memdesc:a793f7e97f547f4eb171a923ead43887f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, \(x\geq0\).  <br /></td></tr>
 <tr class="separator:a793f7e97f547f4eb171a923ead43887f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a552e541b1ad0cac78f5aff01aad1ecc5" id="r_a552e541b1ad0cac78f5aff01aad1ecc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a552e541b1ad0cac78f5aff01aad1ecc5">non_positive</a> = <a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">false</a></td></tr>
-<tr class="memdesc:a552e541b1ad0cac78f5aff01aad1ecc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, x&lt;=0.  <br /></td></tr>
+<tr class="memdesc:a552e541b1ad0cac78f5aff01aad1ecc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, \(x\leq0\).  <br /></td></tr>
 <tr class="separator:a552e541b1ad0cac78f5aff01aad1ecc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc22f05597db20464aa88b3b51f2348f" id="r_afc22f05597db20464aa88b3b51f2348f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#afc22f05597db20464aa88b3b51f2348f">idx</a> = -1</td></tr>
 <tr class="memdesc:afc22f05597db20464aa88b3b51f2348f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which constraint (if any) implies the given domain.  <br /></td></tr>
@@ -122,13 +130,15 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Auxiliay structure to store the domain of a variable. </p>
-<p>Stores information about the sign a decision variable can have:</p><ul>
-<li>Variables with non_negative set to true are supposed to be parameterized as x=u, u&gt;0.</li>
-<li>Variables with non_positive set to true are supposed to be parameterized as x=-v, v&gt;0.</li>
-<li>Variables with both non_positive and non_negative set to false are supposed to be parameterized as x=u-v, u&gt;0 and v&gt;0.</li>
-<li>Variables with both non_positive and non_negative set to true are "degenerate".</li>
+<p>Stores information about the sign that a decision variable can have:</p><ul>
+<li>Variables with <code>non_negative</code> set to true are supposed to be parameterized as \(x=u\), \(u\geq 0\).</li>
+<li>Variables with <code>non_positive</code> set to true are supposed to be parameterized as \(x=-v\), \(v\geq0\).</li>
+<li>Variables with both <code>non_positive</code> and <code>non_negative</code> set to false are supposed to be parameterized as \(x=u-v\), \(u\geq0\) and \(v\geq0\).</li>
+<li>Variables with both <code>non_positive</code> and <code>non_negative</code> set to true are "degenerate".</li>
 </ul>
 <p>This structure is not meant to be used directly by the user. </p>
+
+<p class="definition">Definition at line <a class="el" href="simplex__internal_8hpp_source.html#l00027">27</a> of file <a class="el" href="simplex__internal_8hpp_source.html">simplex_internal.hpp</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="afc22f05597db20464aa88b3b51f2348f" name="afc22f05597db20464aa88b3b51f2348f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc22f05597db20464aa88b3b51f2348f">&#9670;&#160;</a></span>idx</h2>
@@ -144,6 +154,8 @@ Public Attributes</h2></td></tr>
 
 <p>Which constraint (if any) implies the given domain. </p>
 
+<p class="definition">Definition at line <a class="el" href="simplex__internal_8hpp_source.html#l00030">30</a> of file <a class="el" href="simplex__internal_8hpp_source.html">simplex_internal.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a793f7e97f547f4eb171a923ead43887f" name="a793f7e97f547f4eb171a923ead43887f"></a>
@@ -158,7 +170,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If true, x&gt;=0. </p>
+<p>If true, \(x\geq0\). </p>
+
+<p class="definition">Definition at line <a class="el" href="simplex__internal_8hpp_source.html#l00028">28</a> of file <a class="el" href="simplex__internal_8hpp_source.html">simplex_internal.hpp</a>.</p>
 
 </div>
 </div>
@@ -174,7 +188,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If true, x&lt;=0. </p>
+<p>If true, \(x\leq0\). </p>
+
+<p class="definition">Definition at line <a class="el" href="simplex__internal_8hpp_source.html#l00029">29</a> of file <a class="el" href="simplex__internal_8hpp_source.html">simplex_internal.hpp</a>.</p>
 
 </div>
 </div>

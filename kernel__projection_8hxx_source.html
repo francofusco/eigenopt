@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -176,11 +184,11 @@ $(document).ready(function(){initNavTree('kernel__projection_8hxx_source.html','
 </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>} <span class="comment">// namespace EigenOpt</span></div>
-<div class="ttc" id="anamespaceEigenOpt_html"><div class="ttname"><a href="namespaceEigenOpt.html">EigenOpt</a></div><div class="ttdef"><b>Definition</b> kernel_projection.hpp:6</div></div>
-<div class="ttc" id="anamespaceEigenOpt_html_a3bbaf65caedc2bf7bdf93eaaa5e37e0d"><div class="ttname"><a href="namespaceEigenOpt.html#a3bbaf65caedc2bf7bdf93eaaa5e37e0d">EigenOpt::svd_projection</a></div><div class="ttdeci">void svd_projection(const Eigen::MatrixBase&lt; D1 &gt; &amp;A, const Eigen::MatrixBase&lt; D2 &gt; &amp;b, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;Z, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;xeq)</div><div class="ttdoc">Return all solutions to a linear system, using a kernel-based parameterization.</div><div class="ttdef"><b>Definition</b> kernel_projection.hxx:8</div></div>
-<div class="ttc" id="anamespaceEigenOpt_html_a55371cffe586ed0df868602e76a850db"><div class="ttname"><a href="namespaceEigenOpt.html#a55371cffe586ed0df868602e76a850db">EigenOpt::qr_projection</a></div><div class="ttdeci">void qr_projection(const Eigen::MatrixBase&lt; D1 &gt; &amp;A, const Eigen::MatrixBase&lt; D2 &gt; &amp;b, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;Z, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;xeq)</div><div class="ttdoc">Return all solutions to a linear system, using a kernel-based parameterization.</div><div class="ttdef"><b>Definition</b> kernel_projection.hxx:38</div></div>
+<div class="ttc" id="anamespaceEigenOpt_html"><div class="ttname"><a href="namespaceEigenOpt.html">EigenOpt</a></div><div class="ttdoc">Main namespace of this project, containing all utilities.</div><div class="ttdef"><b>Definition</b> <a href="kernel__projection_8hpp_source.html#l00006">kernel_projection.hpp:6</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_html_a3bbaf65caedc2bf7bdf93eaaa5e37e0d"><div class="ttname"><a href="namespaceEigenOpt.html#a3bbaf65caedc2bf7bdf93eaaa5e37e0d">EigenOpt::svd_projection</a></div><div class="ttdeci">void svd_projection(const Eigen::MatrixBase&lt; D1 &gt; &amp;A, const Eigen::MatrixBase&lt; D2 &gt; &amp;b, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;Z, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;xeq)</div><div class="ttdoc">Return all solutions to a linear system, using a kernel-based parameterization.</div><div class="ttdef"><b>Definition</b> <a href="kernel__projection_8hxx_source.html#l00008">kernel_projection.hxx:8</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_html_a55371cffe586ed0df868602e76a850db"><div class="ttname"><a href="namespaceEigenOpt.html#a55371cffe586ed0df868602e76a850db">EigenOpt::qr_projection</a></div><div class="ttdeci">void qr_projection(const Eigen::MatrixBase&lt; D1 &gt; &amp;A, const Eigen::MatrixBase&lt; D2 &gt; &amp;b, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;Z, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;xeq)</div><div class="ttdoc">Return all solutions to a linear system, using a kernel-based parameterization.</div><div class="ttdef"><b>Definition</b> <a href="kernel__projection_8hxx_source.html#l00038">kernel_projection.hxx:38</a></div></div>
 <div class="ttc" id="atypedefs_8hpp_html"><div class="ttname"><a href="typedefs_8hpp.html">typedefs.hpp</a></div></div>
-<div class="ttc" id="atypedefs_8hpp_html_ab310a850d378931e821e198097a0bca0"><div class="ttname"><a href="typedefs_8hpp.html#ab310a850d378931e821e198097a0bca0">EigenOptTypedefs</a></div><div class="ttdeci">#define EigenOptTypedefs(ScalarType)</div><div class="ttdef"><b>Definition</b> typedefs.hpp:6</div></div>
+<div class="ttc" id="atypedefs_8hpp_html_ab310a850d378931e821e198097a0bca0"><div class="ttname"><a href="typedefs_8hpp.html#ab310a850d378931e821e198097a0bca0">EigenOptTypedefs</a></div><div class="ttdeci">#define EigenOptTypedefs(ScalarType)</div><div class="ttdef"><b>Definition</b> <a href="typedefs_8hpp_source.html#l00006">typedefs.hpp:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['solver_0',['Solver',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html',1,'EigenOpt::quadratic_programming']]]
+  ['variabledomain_0',['VariableDomain',['../structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html',1,'EigenOpt::simplex::internal']]]
 ];

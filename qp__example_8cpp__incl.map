@@ -1,9 +1,9 @@
-<map id="src/readme_example.cpp" name="src/readme_example.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="249,5,436,31"/>
+<map id="src/qp_example.cpp" name="src/qp_example.cpp">
+<area shape="rect" id="Node000001" title="Example program showing how to use the Quadratic Programming solver." alt="" coords="267,5,419,31"/>
 <area shape="rect" id="Node000002" href="$quadratic__programming_8hpp.html" title=" " alt="" coords="269,79,416,119"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="345,31,345,65,340,65,340,31"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="282,768,385,793"/>
-<area shape="poly" id="edge27_Node000001_Node000004" title=" " alt="" coords="250,27,170,40,129,52,91,67,58,87,31,112,14,142,8,178,8,635,15,673,35,703,65,727,102,745,144,759,187,768,268,776,268,781,186,773,142,764,100,750,62,732,31,707,10,675,3,636,3,178,9,140,27,108,55,83,89,62,127,47,168,35,249,22"/>
+<area shape="poly" id="edge27_Node000001_Node000004" title=" " alt="" coords="267,25,184,37,141,48,100,63,63,83,34,108,15,140,8,178,8,635,15,673,35,703,65,727,102,745,144,759,187,768,268,776,268,781,186,773,142,764,100,750,62,732,31,707,10,675,3,636,3,178,10,138,30,105,60,79,98,58,139,43,183,32,266,20"/>
 <area shape="rect" id="Node000016" title=" " alt="" coords="440,86,520,111"/>
 <area shape="poly" id="edge28_Node000001_Node000016" title=" " alt="" coords="364,29,449,77,447,81,362,33"/>
 <area shape="rect" id="Node000003" href="$typedefs_8hpp.html" title=" " alt="" coords="140,695,311,720"/>

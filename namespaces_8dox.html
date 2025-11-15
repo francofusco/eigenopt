@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -104,8 +112,20 @@ $(document).ready(function(){initNavTree('namespaces_8dox.html',''); initResizab
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespacefoo" id="r_namespacefoo"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefoo.html">foo</a></td></tr>
-<tr class="memdesc:namespacefoo"><td class="mdescLeft">&#160;</td><td class="mdescRight">A namespace. <br /></td></tr>
+<tr class="memitem:namespaceEigenOpt" id="r_namespaceEigenOpt"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt.html">EigenOpt</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of this project, containing all utilities. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceEigenOpt_1_1simplex" id="r_namespaceEigenOpt_1_1simplex"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html">EigenOpt::simplex</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1simplex"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains functions to solve linear programming problems with the Simplex method. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceEigenOpt_1_1simplex_1_1internal" id="r_namespaceEigenOpt_1_1simplex_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex_1_1internal.html">EigenOpt::simplex::internal</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1simplex_1_1internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility functions used by the Simplex algorithm. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceEigenOpt_1_1quadratic__programming" id="r_namespaceEigenOpt_1_1quadratic__programming"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1quadratic__programming.html">EigenOpt::quadratic_programming</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1quadratic__programming"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the solver used for linearly constrained quadratic optimization problems. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceEigenOpt_1_1quadratic__programming_1_1internal" id="r_namespaceEigenOpt_1_1quadratic__programming_1_1internal"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1quadratic__programming_1_1internal.html">EigenOpt::quadratic_programming::internal</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1quadratic__programming_1_1internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility functions used by the QP <a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html" title="Quadratic Programming solver using active set and null-space projections.">Solver</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

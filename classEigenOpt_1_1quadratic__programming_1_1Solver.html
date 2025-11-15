@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -158,6 +166,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a2d2e4eac22ef3364b4908733daf43ca1"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a2d2e4eac22ef3364b4908733daf43ca1">guess</a> (Eigen::MatrixBase&lt; D &gt; &amp;y)</td></tr>
 <tr class="memdesc:a2d2e4eac22ef3364b4908733daf43ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find an initial solution to start the active-set algorithm.  <br /></td></tr>
 <tr class="separator:a2d2e4eac22ef3364b4908733daf43ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba79a879463e16b3bfc61b230ac366f1" id="r_aba79a879463e16b3bfc61b230ac366f1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#aba79a879463e16b3bfc61b230ac366f1">initActiveSet</a> ()</td></tr>
+<tr class="memdesc:aba79a879463e16b3bfc61b230ac366f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the active-set from the current solution.  <br /></td></tr>
+<tr class="separator:aba79a879463e16b3bfc61b230ac366f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -227,45 +238,47 @@ Private Attributes</h2></td></tr>
 class EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</div><p>Quadratic Programming solver using active set and null-space projections. </p>
 <p>This class implements a quadratic programming solver to minimize a given cost function as in:  </p><p class="formulaDsp">
 \begin{equation}
-  \min_{\mathrm{\mathbf{x}}}
-    \left\| \mathrm{\mathbf{Q}} \mathrm{\mathbf{x}} - \mathrm{\mathbf{r}} \right\|^2
+  \min_{\bm{x}}
+    \left\| \bm{Q} \bm{x} - \bm{r} \right\|^2
   \quad\text{subject to:}\quad
   \begin{cases}
-    \mathrm{\mathbf{A}} \mathrm{\mathbf{x}} = \mathrm{\mathbf{b}} \\
-    \mathrm{\mathbf{C}} \mathrm{\mathbf{x}} \leq \mathrm{\mathbf{d}}
+    \bm{A} \bm{x} = \bm{b} \\
+    \bm{C} \bm{x} \leq \bm{d}
   \end{cases}
 \end{equation}
 </p>
-<p>The reason for using such a specific form for the objective is that it is very well suited for robotics applications, where mathematical models often are written as \( \dot{\mathrm{\mathbf{s}}} = \mathrm{\mathbf{J}} \dot{\mathrm{\mathbf{q}}} \), where \( \mathrm{\mathbf{s}} \) is a vector of features while \( \mathrm{\mathbf{q}} \) are the generalized coordinates of the system - whose derivatives often serve as inputs for the system. Advanced control laws can thus be formulated using quadratic programming.</p>
-<p>To determine a solution for the problem, the first step is to remove the equalities via a null-space projection strategy. The system of equalities is solved to find a particular solution \(\mathrm{\mathbf{x}}_{eq}\) such that \( \mathrm{\mathbf{A}} \mathrm{\mathbf{x}}_{eq} = \mathrm{\mathbf{b}} \). Then, an orthonormal basis of the kernel of \( \mathrm{\mathbf{A}} \) - denoted as \( \mathrm{\mathbf{Z}} \) - is computed. By definition, its property is that \( \mathrm{\mathbf{A}}\mathrm{\mathbf{Z}} = 0 \). The original decision vector is thus substituted in the original problem using the parameterization  </p><p class="formulaDsp">
+<p>The reason for using such a specific form for the objective is that it is very well suited for robotics applications, where mathematical models often are written as \( \dot{\bm{s}} = \bm{J} \dot{\bm{q}} \), where \( \bm{s} \) is a vector of features while \( \bm{q} \) are the generalized coordinates of the system - whose derivatives often serve as inputs for the system. Advanced control laws can thus be formulated using quadratic programming.</p>
+<p>To determine a solution for the problem, the first step is to remove the equalities via a null-space projection strategy. The system of equalities is solved to find a particular solution \(\bm{x}_{eq}\) such that \( \bm{A} \bm{x}_{eq} = \bm{b} \). Then, an orthonormal basis of the kernel of \( \bm{A} \) - denoted as \( \bm{Z} \) - is computed. By definition, its property is that \( \bm{A}\bm{Z} = \bm{0} \). The original decision vector is thus substituted in the original problem using the parameterization  </p><p class="formulaDsp">
 \begin{equation}
-  \mathrm{\mathbf{x}} = \mathrm{\mathbf{x}}_{eq} + \mathrm{\mathbf{Z}} \mathrm{\mathbf{y}}
+  \bm{x} = \bm{x}_{eq} + \bm{Z} \bm{y}
 \end{equation}
 </p>
-<p> where \( \mathrm{\mathbf{y}} \) is a new, lower-dimensional, decision vector. Note that no matter its value, equality constraints will be satisfied. The problem now becomes:  </p><p class="formulaDsp">
+<p> where \( \bm{y} \) is a new, lower-dimensional, decision vector. Note that no matter its value, equality constraints will be satisfied. The problem now becomes:  </p><p class="formulaDsp">
 \begin{equation}
-  \min_{\mathrm{\mathbf{y}}}
-    \left\| \mathrm{\mathbf{Q}}_y \mathrm{\mathbf{y}} - \mathrm{\mathbf{r}}_y \right\|^2
+  \min_{\bm{y}}
+    \left\| \bm{Q}_y \bm{y} - \bm{r}_y \right\|^2
   \quad\text{subject to:}\quad
-  \mathrm{\mathbf{C}}_y \mathrm{\mathbf{y}} \leq \mathrm{\mathbf{d}}_y
+  \bm{C}_y \bm{y} \leq \bm{d}_y
 \end{equation}
 </p>
 <p> where:  </p><p class="formulaDsp">
 \begin{align}
-  \mathrm{\mathbf{Q}}_y &amp;\doteq \mathrm{\mathbf{Q}}\mathrm{\mathbf{Z}} \\
-  \mathrm{\mathbf{r}}_y &amp;\doteq \mathrm{\mathbf{r}} - \mathrm{\mathbf{Q}}\mathrm{\mathbf{x}}_{eq} \\
-  \mathrm{\mathbf{C}}_y &amp;\doteq \mathrm{\mathbf{C}}\mathrm{\mathbf{Z}} \\
-  \mathrm{\mathbf{d}}_y &amp;\doteq \mathrm{\mathbf{d}} - \mathrm{\mathbf{C}}\mathrm{\mathbf{x}}_{eq}
+  \bm{Q}_y &amp;\doteq \bm{Q}\bm{Z} \\
+  \bm{r}_y &amp;\doteq \bm{r} - \bm{Q}\bm{x}_{eq} \\
+  \bm{C}_y &amp;\doteq \bm{C}\bm{Z} \\
+  \bm{d}_y &amp;\doteq \bm{d} - \bm{C}\bm{x}_{eq}
 \end{align}
 </p>
 <p>The problem can be solved using an active-set strategy, whose main steps are:</p><ol type="1">
 <li>Determine an initial feasible solution that satisfies all inequalities.</li>
-<li>Parameterize the decision vector as \( \mathrm{\mathbf{y}} = \mathrm{\mathbf{y}}_k + \mathrm{\mathbf{p}} \), where \( \mathrm{\mathbf{y}}_k \) is the current solution and \( \mathrm{\mathbf{p}} \) is a "step".</li>
-<li>Given a set of "active constraints", compute \( \mathrm{\mathbf{p}} \) so that it minimizes the objective while enforcing the active constraints.</li>
-<li>Rather than jumping to the new iterate immediately, now consider the line parameterization \( \mathrm{\mathbf{y}} = \mathrm{\mathbf{y}}_k + \alpha \mathrm{\mathbf{p}} \) where \( 0 \leq \alpha \leq 1 \). The value of this coefficient is evaluated as the largest possible value that does not cause any new constraint to be violated. If the final value is less than 1, it means that a new constraint has just activated andi t is thus added to the active set. If \( \alpha = 1 \), then the full step can be performed without adding new constraints to the active set.</li>
+<li>Parameterize the decision vector as \( \bm{y} = \bm{y}_k + \bm{p} \), where \( \bm{y}_k \) is the current solution and \( \bm{p} \) is a "step".</li>
+<li>Given a set of "active constraints", compute \( \bm{p} \) so that it minimizes the objective while enforcing the active constraints.</li>
+<li>Rather than jumping to the new iterate immediately, now consider the line parameterization \( \bm{y} = \bm{y}_k + \alpha \bm{p} \) where \( 0 \leq \alpha \leq 1 \). The value of this coefficient is evaluated as the largest possible value that does not cause any new constraint to be violated. If the final value is less than 1, it means that a new constraint has just activated andi t is thus added to the active set. If \( \alpha = 1 \), then the full step can be performed without adding new constraints to the active set.</li>
 <li>At the new point, it is possible to compute the Lagrange multipliers associated to the active constraints. If any multiplier is negative, it means that the constraint does not need to be enforced, and it can be removed from the active set.</li>
 <li>Given the new solution and active set, a new iteration is performed from step 2. The algorithm stops when \( \alpha = 1 \) and no constraints deactivate. </li>
 </ol>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00086">86</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa1475aedaf8dc8ca629a6d4569d1ee2d" name="aa1475aedaf8dc8ca629a6d4569d1ee2d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa1475aedaf8dc8ca629a6d4569d1ee2d">&#9670;&#160;</a></span>Solver() <span class="overload">[1/2]</span></h2>
@@ -302,6 +315,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Give dimensions for x, Q and r explicitly. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00014">14</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
 
 </div>
 </div>
@@ -343,6 +358,8 @@ template&lt;class D1 , class D2 &gt; </div>
 
 <p>Deduce dimensions from the input matrices. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00037">37</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -364,6 +381,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Removes constraints and clear the active set. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00112">112</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
 
 </div>
 </div>
@@ -416,13 +435,53 @@ template&lt;class D &gt; </div>
 </div><div class="memdoc">
 
 <p>Find an initial solution to start the active-set algorithm. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>The following options are considered, in order:</p><ul>
+<li>A solution that satisfies all constraints in the active set;</li>
+<li>Whatever the last solution was (from a previous call to <a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#ab2c93d297956c4f9dc8c082c2fb7780a" title="Solve the problem in the y variable.">solveY()</a>);</li>
+<li>The input value passed by the user, if it has adequate dimension;</li>
+<li>A feasible point obtained using the Simplex method. <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">y</td><td>Initial solution that satisfies all constraints. The following are considered, in order: last solution (from a previous call to <a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#ab2c93d297956c4f9dc8c082c2fb7780a" title="Solve the problem in the y variable.">solveY()</a>), the input value y itself, a solution that satisfies all constraints in the active set, a feasible point obtained using the Simplex method. </td></tr>
+    <tr><td class="paramname">y</td><td>A user-supplied guess. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if a feasible point was found, false if the problem has no solution. </dd></dl>
+</li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00297">297</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
+
+</div>
+</div>
+<a id="aba79a879463e16b3bfc61b230ac366f1" name="aba79a879463e16b3bfc61b230ac366f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba79a879463e16b3bfc61b230ac366f1">&#9670;&#160;</a></span>initActiveSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Scalar &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html">EigenOpt::quadratic_programming::Solver</a>&lt; Scalar &gt;::initActiveSet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initialize the active-set from the current solution. </p>
+<p>Once an initial solution has been determined, it is necessary to ensure that the active set contains the constraints "touched" by such solution. </p><dl class="section return"><dt>Returns</dt><dd>false if for some reason the current solution violates any constraint. A constraint is considered violated if \(\bm{c}_i\cdot\bm{y} - d_i \) exceeds the tolerance. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00351">351</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
 
 </div>
 </div>
@@ -444,6 +503,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Clear the current active set, preventing warm starts. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00098">98</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
 
 </div>
 </div>
@@ -478,7 +539,7 @@ template&lt;class D1 , class D2 &gt; </div>
 </div><div class="memdoc">
 
 <p>Add inequality constraints to the problem. </p>
-<p>This resets all previous constraints and resets the active set. </p><dl class="section warning"><dt>Warning</dt><dd>If a call to this method fails due to infeasible constraints, the problem is left unconstrained. Calling <code><a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a0be6cdc8104c647f103061c2ceda6646" title="Solve the optimization problem.">solve()</a></code> will result in solving \( \mathrm{\mathbf{Q}} \mathrm{\mathbf{x}} = \mathrm{\mathbf{r}} \) in the least-squares sense.</dd></dl>
+<p>This resets all previous constraints and resets the active set. </p><dl class="section warning"><dt>Warning</dt><dd>If a call to this method fails due to infeasible constraints, the problem is left unconstrained. Calling <code><a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a0be6cdc8104c647f103061c2ceda6646" title="Solve the optimization problem.">solve()</a></code> will result in solving \( \bm{Q} \bm{x} = \bm{r} \) in the least-squares sense.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">C</td><td>Inequalities constraints matrix. </td></tr>
@@ -487,6 +548,8 @@ template&lt;class D1 , class D2 &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if constraints are feasible, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00128">128</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
 
 </div>
 </div>
@@ -533,7 +596,7 @@ template&lt;class D1 , class D2 , class D3 , class D4 &gt; </div>
 </div><div class="memdoc">
 
 <p>Add equality and inequality constraints to the problem. </p>
-<p>This resets all previous constraints and resets the active set. </p><dl class="section warning"><dt>Warning</dt><dd>If a call to this method fails due to infeasible constraints, the problem is left unconstrained. Calling <code><a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a0be6cdc8104c647f103061c2ceda6646" title="Solve the optimization problem.">solve()</a></code> will result in solving \( \mathrm{\mathbf{Q}} \mathrm{\mathbf{x}} = \mathrm{\mathbf{r}} \) in the least-squares sense.</dd></dl>
+<p>This resets all previous constraints and resets the active set. </p><dl class="section warning"><dt>Warning</dt><dd>If a call to this method fails due to infeasible constraints, the problem is left unconstrained. Calling <code><a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a0be6cdc8104c647f103061c2ceda6646" title="Solve the optimization problem.">solve()</a></code> will result in solving \( \bm{Q} \bm{x} = \bm{r} \) in the least-squares sense.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">A</td><td>Equalities constraints matrix. </td></tr>
@@ -544,6 +607,8 @@ template&lt;class D1 , class D2 , class D3 , class D4 &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if constraints are feasible, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00139">139</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
 
 </div>
 </div>
@@ -575,6 +640,8 @@ template&lt;class D &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the optimizaion was successful, false if the problem is not feasible. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00273">273</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
 
 </div>
 </div>
@@ -614,6 +681,8 @@ template&lt;class D &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the optimizaion was successful, false if the problem is not feasible. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00389">389</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
 
 </div>
 </div>
@@ -657,6 +726,8 @@ template&lt;class D1 , class D2 &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the constraints did not change dimension, or if they did and the new ones are feasible. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00197">197</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
+
 </div>
 </div>
 <a id="aee28bf278f9ceca7ce9e03f4ec4f6f51" name="aee28bf278f9ceca7ce9e03f4ec4f6f51"></a>
@@ -691,6 +762,8 @@ template&lt;class D1 , class D2 &gt; </div>
 
 <p>Updates the objective matrix. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hxx_source.html#l00051">51</a> of file <a class="el" href="quadratic__programming_8hxx_source.html">quadratic_programming.hxx</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -718,6 +791,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>List of constraints in the active set. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00231">231</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ae3532b09180e90d3abb37f9e29c4f73a" name="ae3532b09180e90d3abb37f9e29c4f73a"></a>
@@ -743,6 +818,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Subset of Cy, corresponding to active constraints. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00229">229</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>
@@ -770,6 +847,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>Modified inequality constraints matrix. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00224">224</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a15df2e0b2297794af207d1193c5b0a88" name="a15df2e0b2297794af207d1193c5b0a88"></a>
@@ -795,6 +874,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Subset of dy, corresponding to active constraints. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00230">230</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>
@@ -822,6 +903,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>Modified inequality constraints vector. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00225">225</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ae999aab5427f51c196e7f9d8ad867531" name="ae999aab5427f51c196e7f9d8ad867531"></a>
@@ -847,6 +930,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>List of constraints not in the active set. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00232">232</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>
@@ -874,6 +959,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>number of equality constraints. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00214">214</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a4c43cdc3d580d505cee9206ae48c8435" name="a4c43cdc3d580d505cee9206ae48c8435"></a>
@@ -899,6 +986,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Number of inequality constraints. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00213">213</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>
@@ -926,6 +1015,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>Number of rows in the objective. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00211">211</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a8f62bd80ac256269b9f4920ef82e065d" name="a8f62bd80ac256269b9f4920ef82e065d"></a>
@@ -951,6 +1042,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Number of decision variables. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00210">210</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>
@@ -978,6 +1071,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>Number of variables after removing the equality constraints. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00212">212</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="af6d5b1b0023e166c74377f593b3b2b85" name="af6d5b1b0023e166c74377f593b3b2b85"></a>
@@ -1003,6 +1098,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Matrix of coefficients for the objective function. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00216">216</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>
@@ -1030,6 +1127,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>Modified matrix of coefficients for the objective function. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00222">222</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a4eb0ea707d32b2be8e0aee756446a316" name="a4eb0ea707d32b2be8e0aee756446a316"></a>
@@ -1055,6 +1154,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Vector of coefficients for the objective function. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00217">217</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>
@@ -1082,6 +1183,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>Modified vector of coefficients for the objective function. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00223">223</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a488f3a804192dfc8f90be78fafbd1ac6" name="a488f3a804192dfc8f90be78fafbd1ac6"></a>
@@ -1107,6 +1210,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Small tolerance used in calculations. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00209">209</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>
@@ -1134,6 +1239,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>A particular solution to the equality constraints. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00220">220</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a80daafdeb1f34478809abd2ea8418746" name="a80daafdeb1f34478809abd2ea8418746"></a>
@@ -1159,6 +1266,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Current guess of the decision variables. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00227">227</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>
@@ -1186,6 +1295,8 @@ template&lt;class Scalar &gt; </div>
 
 <p>Unconstrained minimum of the objective. </p>
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00226">226</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a84c4fb9f35dad11eb87022030f39e172" name="a84c4fb9f35dad11eb87022030f39e172"></a>
@@ -1211,6 +1322,8 @@ template&lt;class Scalar &gt; </div>
 </div><div class="memdoc">
 
 <p>Matrix that projects into the kernel of the equality constraints matrix. </p>
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming_8hpp_source.html#l00219">219</a> of file <a class="el" href="quadratic__programming_8hpp_source.html">quadratic_programming.hpp</a>.</p>
 
 </div>
 </div>

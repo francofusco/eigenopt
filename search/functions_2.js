@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['deduce_5fvariables_5fdomains_0',['deduce_variables_domains',['../namespaceEigenOpt_1_1simplex_1_1internal.html#a2d2a61a7c4ba3c3807109a931ed1aee3',1,'EigenOpt::simplex::internal']]],
-  ['draw_1',['draw',['../classApp.html#a60f9b76d40eab2ef9ae3032685eb8433',1,'App']]]
+  ['eigenopttypedefs_0',['EigenOptTypedefs',['../classEigenOpt_1_1quadratic__programming_1_1Solver.html#a74af3539fd00e4801f199072b27fb6ca',1,'EigenOpt::quadratic_programming::Solver']]],
+  ['eliminate_5fobjective_1',['eliminate_objective',['../namespaceEigenOpt_1_1simplex_1_1internal.html#af74b70ee8a196322b4a706ab3236293d',1,'EigenOpt::simplex::internal']]]
 ];

@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -100,7 +108,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>active&#160;:&#160;<a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a61fe234c098df5726b50f5d84149b180">EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</a></li>
-<li>App()&#160;:&#160;<a class="el" href="classApp.html#acb8cbf3e285b91d0170ffe87df5989c5">App</a></li>
 </ul>
 
 
@@ -113,7 +120,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
 <li>da&#160;:&#160;<a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a15df2e0b2297794af207d1193c5b0a88">EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</a></li>
-<li>draw()&#160;:&#160;<a class="el" href="classApp.html#a60f9b76d40eab2ef9ae3032685eb8433">App</a></li>
 <li>dy&#160;:&#160;<a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a7c54dd7fd4df01dc86c6afaff8e459b7">EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</a></li>
 </ul>
 
@@ -131,6 +137,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
 <li>idx&#160;:&#160;<a class="el" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#afc22f05597db20464aa88b3b51f2348f">EigenOpt::simplex::internal::VariableDomain</a></li>
 <li>inactive&#160;:&#160;<a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#ae999aab5427f51c196e7f9d8ad867531">EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</a></li>
+<li>initActiveSet()&#160;:&#160;<a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#aba79a879463e16b3bfc61b230ac366f1">EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</a></li>
 </ul>
 
 
@@ -164,7 +171,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
 <li>setConstraints()&#160;:&#160;<a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a984361820d413dd4496b5c9ffc083f0f">EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</a></li>
-<li>setup()&#160;:&#160;<a class="el" href="classApp.html#ae98e8cafc7608395f626cc20cd9c7c11">App</a></li>
 <li>solve()&#160;:&#160;<a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#a0be6cdc8104c647f103061c2ceda6646">EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</a></li>
 <li>Solver()&#160;:&#160;<a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#aa1475aedaf8dc8ca629a6d4569d1ee2d">EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</a></li>
 <li>solveY()&#160;:&#160;<a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html#ab2c93d297956c4f9dc8c082c2fb7780a">EigenOpt::quadratic_programming::Solver&lt; Scalar &gt;</a></li>

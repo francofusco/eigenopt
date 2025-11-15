@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -99,6 +107,7 @@ $(document).ready(function(){initNavTree('globals_defs.html',''); initResizable(
 <div class="textblock">Here is a list of all macros with links to the files they belong to:</div><ul>
 <li>EigenOpt_QUADPROG_BREAK&#160;:&#160;<a class="el" href="quadratic__programming__debug_8hpp.html#aef85e720a0df4585ea823ce82ef9e3ea">quadratic_programming_debug.hpp</a></li>
 <li>EigenOpt_QUADPROG_DBG&#160;:&#160;<a class="el" href="quadratic__programming__debug_8hpp.html#adaea6f79d5d2f8998a21b9ee836cfcaf">quadratic_programming_debug.hpp</a></li>
+<li>EigenOpt_QUADPROG_HIGHVIS_MSG&#160;:&#160;<a class="el" href="quadratic__programming__debug_8hpp.html#a851e9ca1aa90f76d3d09e4f26040567f">quadratic_programming_debug.hpp</a></li>
 <li>EigenOpt_SIMPLEX_DBG&#160;:&#160;<a class="el" href="simplex__debug_8hpp.html#a822c57332b4d90e810d019aa98be3d4f">simplex_debug.hpp</a></li>
 <li>EigenOptTypedefs&#160;:&#160;<a class="el" href="typedefs_8hpp.html#ab310a850d378931e821e198097a0bca0">typedefs.hpp</a></li>
 </ul>

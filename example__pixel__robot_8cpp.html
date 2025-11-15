@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -96,9 +104,6 @@ $(document).ready(function(){initNavTree('example__pixel__robot_8cpp.html',''); 
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">example_pixel_robot.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -106,63 +111,101 @@ $(document).ready(function(){initNavTree('example__pixel__robot_8cpp.html',''); 
 <p>Example program showing how to use the QP solver in a robot control problem.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;piksel/baseapp.hpp&gt;</code><br />
+<code>#include &lt;Eigen/Dense&gt;</code><br />
+<code>#include &lt;<a class="el" href="quadratic__programming_8hpp_source.html">EigenOpt/quadratic_programming.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="kernel__projection_8hpp_source.html">EigenOpt/kernel_projection.hpp</a>&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;deque&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for example_pixel_robot.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="example__pixel__robot_8cpp__incl.png" border="0" usemap="#asrc_2example__pixel__robot_8cpp" alt=""/></div>
 <map name="asrc_2example__pixel__robot_8cpp" id="asrc_2example__pixel__robot_8cpp">
-<area shape="rect" title="Example program showing how to use the QP solver in a robot control problem." alt="" coords="5,5,213,31"/>
-<area shape="rect" title=" " alt="" coords="35,79,183,104"/>
-<area shape="poly" title=" " alt="" coords="112,31,112,65,107,65,107,31"/>
+<area shape="rect" title="Example program showing how to use the QP solver in a robot control problem." alt="" coords="193,5,401,31"/>
+<area shape="rect" title=" " alt="" coords="5,86,153,111"/>
+<area shape="poly" title=" " alt="" coords="266,33,125,84,123,79,264,28"/>
+<area shape="rect" title=" " alt="" coords="569,768,672,793"/>
+<area shape="poly" title=" " alt="" coords="284,33,258,57,228,91,204,132,197,155,194,178,194,635,197,648,204,661,233,684,276,705,329,723,449,751,556,769,556,774,448,756,328,728,274,710,230,689,200,664,192,650,189,636,189,178,191,153,199,130,224,87,254,53,280,29"/>
+<area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="279,79,426,119"/>
+<area shape="poly" title=" " alt="" coords="307,29,333,66,329,69,303,32"/>
+<area shape="rect" href="kernel__projection_8hpp.html" title=" " alt="" coords="279,548,504,573"/>
+<area shape="poly" title=" " alt="" coords="292,32,263,93,250,135,245,178,245,415,247,437,255,456,282,491,317,519,353,540,350,544,314,524,278,495,251,459,242,438,239,416,239,178,245,134,258,91,287,30"/>
+<area shape="rect" title=" " alt="" coords="450,86,527,111"/>
+<area shape="poly" title=" " alt="" coords="326,28,449,78,447,83,324,33"/>
+<area shape="rect" title=" " alt="" coords="552,86,615,111"/>
+<area shape="poly" title=" " alt="" coords="355,28,443,48,540,76,547,78,545,84,539,81,441,53,354,33"/>
+<area shape="poly" title=" " alt="" coords="343,120,312,180,300,219,295,259,295,415,293,441,286,462,269,499,262,516,259,533,261,551,270,572,297,610,330,644,367,673,407,698,489,737,561,762,559,767,487,742,405,703,364,678,326,648,293,614,265,575,256,552,254,533,257,514,264,497,281,460,288,439,290,415,290,259,295,218,308,178,338,117"/>
+<area shape="rect" href="typedefs_8hpp.html" title=" " alt="" coords="814,695,985,720"/>
+<area shape="poly" title=" " alt="" coords="427,114,438,116,506,124,597,129,809,142,910,156,994,177,1028,192,1053,210,1070,232,1075,258,1075,562,1072,586,1063,608,1049,627,1031,645,990,672,948,692,946,687,987,668,1028,641,1045,624,1058,605,1067,585,1070,562,1070,259,1065,235,1049,214,1025,197,993,182,909,161,808,148,597,135,506,129,438,121,426,119"/>
+<area shape="rect" title=" " alt="" coords="921,475,984,500"/>
+<area shape="poly" title=" " alt="" coords="427,114,736,185,947,237,965,244,971,249,974,258,974,342,969,407,961,462,955,461,964,406,969,342,969,259,967,252,962,249,945,243,734,190,426,119"/>
+<area shape="rect" href="quadratic__programming_8hxx.html" title=" " alt="" coords="376,167,583,192"/>
+<area shape="poly" title=" " alt="" coords="385,117,451,157,448,162,382,121"/>
+<area shape="poly" title=" " alt="" coords="855,723,680,767,678,762,854,717"/>
+<area shape="poly" title=" " alt="" coords="464,194,440,215,419,241,405,267,398,288,394,339,394,415,394,534,389,534,389,415,389,339,393,287,401,265,414,239,437,211,461,190"/>
+<area shape="rect" href="simplex_8hpp.html" title=" " alt="" coords="769,247,934,273"/>
+<area shape="poly" title=" " alt="" coords="534,189,784,242,783,247,533,195"/>
+<area shape="rect" href="quadratic__programming__debug_8hpp.html" title=" " alt="" coords="429,240,621,280"/>
+<area shape="poly" title=" " alt="" coords="488,191,509,227,505,230,484,194"/>
+<area shape="poly" title=" " alt="" coords="405,572,600,756,596,760,402,576"/>
+<area shape="rect" href="kernel__projection_8hxx.html" title=" " alt="" coords="539,621,702,647"/>
+<area shape="poly" title=" " alt="" coords="429,571,571,615,569,620,427,576"/>
+<area shape="poly" title=" " alt="" coords="666,644,842,689,840,694,665,649"/>
+<area shape="poly" title=" " alt="" coords="884,270,927,290,973,321,993,340,1010,361,1021,386,1025,412,1025,635,1023,683,1015,703,998,722,975,736,943,748,860,764,768,775,686,780,686,775,768,769,859,759,942,742,973,731,995,718,1011,700,1018,682,1019,635,1019,413,1015,387,1005,364,989,343,969,325,924,295,882,275"/>
+<area shape="poly" title=" " alt="" coords="859,272,944,461,939,463,854,274"/>
+<area shape="rect" title=" " alt="" coords="787,475,846,500"/>
+<area shape="poly" title=" " alt="" coords="852,273,823,461,818,460,847,272"/>
+<area shape="rect" href="simplex_8hxx.html" title=" " alt="" coords="620,328,723,353"/>
+<area shape="poly" title=" " alt="" coords="826,275,711,325,709,320,824,270"/>
+<area shape="poly" title=" " alt="" coords="706,351,751,371,797,399,835,432,860,474,881,529,893,587,902,681,896,681,888,588,876,531,856,476,831,435,794,403,748,376,703,356"/>
+<area shape="poly" title=" " alt="" coords="632,356,581,375,530,404,492,436,458,472,408,538,404,535,454,469,488,432,527,399,579,370,630,351"/>
+<area shape="rect" href="simplex__debug_8hpp.html" title=" " alt="" coords="528,548,740,573"/>
+<area shape="poly" title=" " alt="" coords="623,356,583,374,565,387,551,403,537,428,531,450,533,473,544,499,564,522,591,540,588,544,561,526,540,501,528,474,525,450,532,426,547,400,562,383,580,369,621,351"/>
+<area shape="rect" href="simplex__internal_8hpp.html" title=" " alt="" coords="560,401,783,427"/>
+<area shape="poly" title=" " alt="" coords="674,354,674,388,669,388,669,354"/>
+<area shape="poly" title=" " alt="" coords="686,425,710,450,736,486,754,528,758,551,755,574,734,630,704,682,672,726,644,759,640,756,668,723,700,679,730,628,750,573,752,551,749,530,732,489,706,454,682,429"/>
+<area shape="poly" title=" " alt="" coords="717,424,909,472,907,477,716,429"/>
+<area shape="poly" title=" " alt="" coords="696,424,782,466,780,471,694,429"/>
+<area shape="rect" href="simplex__internal_8hxx.html" title=" " alt="" coords="553,475,712,500"/>
+<area shape="poly" title=" " alt="" coords="667,428,648,464,643,461,663,426"/>
+<area shape="poly" title=" " alt="" coords="595,503,445,547,443,541,593,497"/>
+<area shape="poly" title=" " alt="" coords="636,500,636,534,631,535,630,500"/>
 </map>
 </div>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classApp.html">App</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627" id="r_a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="example__pixel__robot_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
-<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
+</div>
+<p><a href="example__pixel__robot_8cpp_source.html">Go to the source code of this file.</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Example program showing how to use the QP solver in a robot control problem. </p>
-<p>We consider the case of a hyper-redundant planar robot, composed of a series of links connected by rotatory joints. The goal is to track a given target (the mouse) with the tip of the robot, while keeping the chain "as straight as possible". We also want to make sure that the actuators of the robot do not absorb too much power, and therefore we need to limit the angular velocity of each joint. Finally, we want to make sure that no joint goes beyond its limits - the range being (-90°, 90°).</p>
+<p>We consider the case of a unicycle robot moving within a planar environment. Without entering too much into details, once we choose a point \( \bm{p} \) on the robot that does not lie on the wheel axis, we can express the velocity of such point as a function of the wheels velocities \(\dot{\bm{\phi}} \): \( \dot{\bm{p}} = \bm{J}\dot{\bm{\phi}} \) (the Jacobian \(\bm{J}\) is a function of the orientation of the robot). We can try to follow a given target \( \bm{t} \) using a simple proprtional control law: \( \dot{\bm{p}} = \lambda \left(\bm{t} - \bm{p}\right) \). While moving, it is however important not to exceed the operational limits of the robot. As an example, we might want to ensure that each wheel doesn't rotate faster than a certain limit \(\dot{\bm{\phi}}_{lim}\) in either direction.</p>
+<p>While moving, the robot should avoid a set of obstacles. If we denote with \( \delta_i = d_i^2 = \left\|\bm{p}-\bm{c}_i\right\|^2\) the squared distance from the robot to the center of the \(i\)-th obstacle, we can find that the derivative of such quantity is  </p><p class="formulaDsp">
+\begin{equation}
+  \dot{\delta}_i = 2 \left(\bm{p}-\bm{c}_i\right)^T \dot{\bm{p}}
+\end{equation}
+</p>
+<p> One way to avoid hitting the obstacle is to ensure that, when the distance drops below a given threshold \(d_{min}\), the derivative above is non-negative, since this would mean that the distance is either increasing or constant. In mathematical terms, we could require that for all objects \( \dot{\delta}_i \geq - \gamma \left(d_i - d_{min}\right) \). Note that when \( d_i \gg d_{min} \), the derivative \(\dot{\delta}_i\) can be negative, meaning that the distance can decrease almost freely. This is important because it means that when the robot is far away from an object, it is allowed to approach it without issue. Combining all information detailed above, one can introduce for each obstacle a constraint in the form:  </p><p class="formulaDsp">
+\begin{equation}
+  -\left(\bm{p}-\bm{c}_i\right)^T\bm{J}\dot{\bm{\phi}} \leq 2 \gamma \left(d_i - d_{min}\right)
+\end{equation}
+</p>
+<p>The control problem can thus be formulated as a quadratic optimization:  </p><p class="formulaDsp">
+\begin{equation}
+  \min_{\dot{\bm{\phi}}} \left\|J\dot{\bm{\phi}} - \lambda \left(\bm{t} - \bm{p}\right)\right\|^2
+  \quad\text{subject to:}\quad
+  \begin{cases}
+    -\left(\bm{p}-\bm{c}_i\right)^T\bm{J}\dot{\bm{\phi}} \leq 2 \gamma \left(d_i - d_{min}\right)
+    \quad\forall i=1,\cdots,N_{obs} \\
+    -\dot{\bm{\phi}}_{lim} \leq \dot{\bm{\phi}} \leq \dot{\bm{\phi}}_{lim}
+  \end{cases}
+\end{equation}
+</p>
 <dl class="section note"><dt>Note</dt><dd>To compile this example, you need to download <a href="https://bernhardfritz.github.io/piksel/#/">piksel</a>. Move into the root project folder (where the main CMakeLists.txt file is located) and type <div class="fragment"><div class="line">git clone --recursive https:<span class="comment">//github.com/bernhardfritz/piksel.git</span></div>
-</div><!-- fragment --> </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a3c04138a5bfe5d72780bb7e82a18e627" name="a3c04138a5bfe5d72780bb7e82a18e627"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&#160;</a></span>main()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int main </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>argv</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Entrypoint for the executable </p>
-
+</div><!-- fragment --></dd></dl>
+<div class="image">
+<img src="qp_bot.png" alt=""/>
 </div>
-</div>
-</div><!-- contents -->
+ 
+<p class="definition">Definition in file <a class="el" href="example__pixel__robot_8cpp_source.html">example_pixel_robot.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

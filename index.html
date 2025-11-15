@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -100,8 +108,85 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="mainpage"></a></p>
-<p>Sources are available on <a href="https://github.com/francofusco/template-cmake-project"><img src="GitHub_Logo.png" alt="GitHub" style="height:30px;" class="inline"/> </a> </p>
-</div></div><!-- PageDoc -->
+<p>Sources are available on <a href="https://github.com/francofusco/template-cmake-project"><img src="GitHub_Logo.png" alt="GitHub" style="height:30px;" class="inline"/> </a></p>
+<p>During my PhD and postdoc, I became quite well-acquainted with numerical optimization. For some round-tables with fellow students, I prepared some slides and codes to illustrate how some optimization algorithms work. While most of the code was rather unpolished, the Simplex and QP optimization routines were acceptably written, and I decided to gather them here for future reference - and showcase my ability to code :computer:</p>
+<p>For now, I included only two solvers - one for linear programming, one for quadratic programming - but I will hopefully have the time in the future to polish others I had created and add them as well. Below are two examples, one using <code><a class="el" href="namespaceEigenOpt_1_1simplex.html#a5330516bcc615e0ed4db482d0a5038e7" title="Solve a constrained linear optimization problem.">EigenOpt::simplex::minimize()</a></code> and the other featuring <code><a class="el" href="classEigenOpt_1_1quadratic__programming_1_1Solver.html" title="Quadratic Programming solver using active set and null-space projections.">EigenOpt::quadratic_programming::Solver</a></code>. You can find more details on them in the respective documentation.</p>
+<p><a class="el" href="simplex__example_8cpp.html" title="Example program showing how to use the Simplex solver.">simplex_example.cpp</a>:</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="simplex_8hpp.html">EigenOpt/simplex.hpp</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Eigen/Dense&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="qp__example_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
+<div class="line">  <span class="comment">/* Solve: min - x1 + x2</span></div>
+<div class="line"><span class="comment">   * Such that: -4 x1  - x2 &lt;= -5</span></div>
+<div class="line"><span class="comment">   *               x1 -4 x2 &lt;= -3</span></div>
+<div class="line"><span class="comment">   *             2 x1  - x2 &lt;= 8</span></div>
+<div class="line"><span class="comment">   *                 x1, x2 &gt;=  0</span></div>
+<div class="line"><span class="comment">   */</span></div>
+<div class="line">  <span class="comment">// Objective and constraints in matrix form.</span></div>
+<div class="line">  Eigen::VectorXd f(2);     f &lt;&lt; -1, 1;</div>
+<div class="line">  Eigen::MatrixXd C(5, 2);  C &lt;&lt; -4,-1,</div>
+<div class="line">                                  1,-4,</div>
+<div class="line">                                  2,-1,</div>
+<div class="line">                                 -1, 0,</div>
+<div class="line">                                  0,-1;</div>
+<div class="line">  Eigen::VectorXd d(5);     d &lt;&lt; -5, -3, 8, 0, 0;</div>
+<div class="line">  <span class="keywordtype">double</span> tolerance = 1e-6;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Solve the problem.</span></div>
+<div class="line">  Eigen::VectorXd x;</div>
+<div class="line">  std::string message;</div>
+<div class="line">  <a class="code hl_function" href="namespaceEigenOpt_1_1simplex.html#a5330516bcc615e0ed4db482d0a5038e7">EigenOpt::simplex::minimize</a>(f, C, d, x, message, tolerance);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Solution: &quot;</span> &lt;&lt; x.transpose() &lt;&lt; std::endl;</div>
+<div class="line">  <span class="comment">// Prints: &quot;Solution: 5  2&quot;</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_html_a5330516bcc615e0ed4db482d0a5038e7"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex.html#a5330516bcc615e0ed4db482d0a5038e7">EigenOpt::simplex::minimize</a></div><div class="ttdeci">bool minimize(const Eigen::MatrixBase&lt; D1 &gt; &amp;f, const Eigen::MatrixBase&lt; D2 &gt; &amp;A, const Eigen::MatrixBase&lt; D3 &gt; &amp;b, const Eigen::MatrixBase&lt; D4 &gt; &amp;C, const Eigen::MatrixBase&lt; D5 &gt; &amp;d, Eigen::DenseBase&lt; D6 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</div><div class="ttdoc">Solve a constrained linear optimization problem.</div><div class="ttdef"><b>Definition</b> <a href="simplex_8hxx_source.html#l00152">simplex.hxx:152</a></div></div>
+<div class="ttc" id="aqp__example_8cpp_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="qp__example_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition</b> <a href="qp__example_8cpp_source.html#l00032">qp_example.cpp:32</a></div></div>
+<div class="ttc" id="asimplex_8hpp_html"><div class="ttname"><a href="simplex_8hpp.html">simplex.hpp</a></div></div>
+</div><!-- fragment --><p><a class="el" href="qp__example_8cpp.html" title="Example program showing how to use the Quadratic Programming solver.">qp_example.cpp</a>:</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="quadratic__programming_8hpp.html">EigenOpt/quadratic_programming.hpp</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Eigen/Dense&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="qp__example_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
+<div class="line">  <span class="comment">/* Solve: min (x1 + x2 - 5)^2</span></div>
+<div class="line"><span class="comment">   * Such that: x1 - x2 = 10</span></div>
+<div class="line"><span class="comment">   *       and: x1 + 4*x2 &lt;= 0</span></div>
+<div class="line"><span class="comment">   */</span></div>
+<div class="line">  <span class="comment">// Objective and constraints in matrix form.</span></div>
+<div class="line">  Eigen::MatrixXd Q(1, 2);  Q &lt;&lt; 1, 1;</div>
+<div class="line">  Eigen::VectorXd r(1);     r &lt;&lt; 5;</div>
+<div class="line">  Eigen::MatrixXd A(1, 2);  A &lt;&lt; 1, -1;</div>
+<div class="line">  Eigen::VectorXd b(1);     b &lt;&lt; 10;</div>
+<div class="line">  Eigen::MatrixXd C(1, 2);  C &lt;&lt; 1, 4;</div>
+<div class="line">  Eigen::VectorXd d(1);     d &lt;&lt; 0;</div>
+<div class="line">  <span class="keywordtype">double</span> tolerance = 1e-6;</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Create the solver and setup the problem.</span></div>
+<div class="line">  <span class="keyword">namespace </span>qp = <a class="code hl_namespace" href="namespaceEigenOpt_1_1quadratic__programming.html">EigenOpt::quadratic_programming</a>;</div>
+<div class="line">  qp::Solver&lt;double&gt; solver(Q, r, tolerance);</div>
+<div class="line">  solver.setConstraints(A, b, C, d);</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Solve the problem.</span></div>
+<div class="line">  Eigen::VectorXd x;</div>
+<div class="line">  solver.solve(x);</div>
+<div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;Solution: &quot;</span> &lt;&lt; x.transpose() &lt;&lt; std::endl;</div>
+<div class="line">  <span class="comment">// Prints: &quot;Solution: 7.5  -2.5&quot;</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespaceEigenOpt_1_1quadratic__programming_html"><div class="ttname"><a href="namespaceEigenOpt_1_1quadratic__programming.html">EigenOpt::quadratic_programming</a></div><div class="ttdoc">Contains the solver used for linearly constrained quadratic optimization problems.</div><div class="ttdef"><b>Definition</b> <a href="quadratic__programming_8hpp_source.html#l00010">quadratic_programming.hpp:10</a></div></div>
+<div class="ttc" id="aquadratic__programming_8hpp_html"><div class="ttname"><a href="quadratic__programming_8hpp.html">quadratic_programming.hpp</a></div></div>
+</div><!-- fragment --><p>A more interesting example can be found in <a class="el" href="example__pixel__robot_8cpp.html" title="Example program showing how to use the QP solver in a robot control problem.">example_pixel_robot.cpp</a>, which contains the code to create a very simple simulator for a planar mobile robot that has to move in a rather cluttered environment. Quadratic Programming is used to find the command to be sent to the robot so that it tracks a target (the mouse) while avoiding obstacles.</p>
+<div class="image">
+<img src="qp_bot.png" alt=""/>
+<div class="caption">
+Target-following robot</div></div>
+     </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

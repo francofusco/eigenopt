@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -147,13 +155,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="simplex_8hpp__dep__incl.png" border="0" usemap="#ainclude_2EigenOpt_2simplex_8hppdep" alt=""/></div>
 <map name="ainclude_2EigenOpt_2simplex_8hppdep" id="ainclude_2EigenOpt_2simplex_8hppdep">
-<area shape="rect" title=" " alt="" coords="5,5,221,31"/>
-<area shape="rect" href="quadratic__programming_8hxx.html" title=" " alt="" coords="15,79,212,119"/>
-<area shape="poly" title=" " alt="" coords="116,44,116,79,111,79,111,44"/>
-<area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="15,167,212,207"/>
-<area shape="poly" title=" " alt="" coords="116,133,116,166,111,166,111,133"/>
-<area shape="rect" href="readme__example_8cpp.html" title=" " alt="" coords="20,255,207,280"/>
-<area shape="poly" title=" " alt="" coords="116,220,116,254,111,254,111,220"/>
+<area shape="rect" title=" " alt="" coords="211,5,427,31"/>
+<area shape="rect" href="quadratic__programming_8hxx.html" title=" " alt="" coords="112,79,309,119"/>
+<area shape="poly" title=" " alt="" coords="293,41,238,81,235,76,290,37"/>
+<area shape="rect" href="simplex__example_8cpp.html" title="Example program showing how to use the Simplex solver." alt="" coords="334,86,522,111"/>
+<area shape="poly" title=" " alt="" coords="348,37,413,84,410,88,345,41"/>
+<area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="112,167,309,207"/>
+<area shape="poly" title=" " alt="" coords="213,133,213,166,208,166,208,133"/>
+<area shape="rect" href="example__pixel__robot_8cpp.html" title="Example program showing how to use the QP solver in a robot control problem." alt="" coords="5,255,213,280"/>
+<area shape="poly" title=" " alt="" coords="177,217,126,256,123,252,174,213"/>
+<area shape="rect" href="qp__example_8cpp.html" title="Example program showing how to use the Quadratic Programming solver." alt="" coords="237,255,389,280"/>
+<area shape="poly" title=" " alt="" coords="248,213,300,252,296,256,245,217"/>
 </map>
 </div>
 </div>
@@ -162,28 +174,30 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceEigenOpt" id="r_namespaceEigenOpt"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt.html">EigenOpt</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of this project, containing all utilities. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceEigenOpt_1_1simplex" id="r_namespaceEigenOpt_1_1simplex"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html">EigenOpt::simplex</a></td></tr>
+<tr class="memdesc:namespaceEigenOpt_1_1simplex"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains functions to solve linear programming problems with the Simplex method. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abdeb91ba24775116e419a0dde265e0ac" id="r_abdeb91ba24775116e419a0dde265e0ac"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </td></tr>
-<tr class="memitem:abdeb91ba24775116e419a0dde265e0ac"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#abdeb91ba24775116e419a0dde265e0ac">EigenOpt::simplex::minimize</a> (const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
-<tr class="memdesc:abdeb91ba24775116e419a0dde265e0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve an inequality-constrained linear optimization problem.  <br /></td></tr>
-<tr class="separator:abdeb91ba24775116e419a0dde265e0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a282597195ac57a948f827d5ef3881428" id="r_a282597195ac57a948f827d5ef3881428"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </td></tr>
-<tr class="memitem:a282597195ac57a948f827d5ef3881428"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#a282597195ac57a948f827d5ef3881428">EigenOpt::simplex::maximize</a> (const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
-<tr class="memdesc:a282597195ac57a948f827d5ef3881428"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve an inequality-constrained linear optimization problem.  <br /></td></tr>
-<tr class="separator:a282597195ac57a948f827d5ef3881428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5330516bcc615e0ed4db482d0a5038e7" id="r_a5330516bcc615e0ed4db482d0a5038e7"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 , class D5 , class D6 &gt; </td></tr>
 <tr class="memitem:a5330516bcc615e0ed4db482d0a5038e7"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#a5330516bcc615e0ed4db482d0a5038e7">EigenOpt::simplex::minimize</a> (const Eigen::MatrixBase&lt; D1 &gt; &amp;f, const Eigen::MatrixBase&lt; D2 &gt; &amp;A, const Eigen::MatrixBase&lt; D3 &gt; &amp;b, const Eigen::MatrixBase&lt; D4 &gt; &amp;C, const Eigen::MatrixBase&lt; D5 &gt; &amp;d, Eigen::DenseBase&lt; D6 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
 <tr class="memdesc:a5330516bcc615e0ed4db482d0a5038e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve a constrained linear optimization problem.  <br /></td></tr>
 <tr class="separator:a5330516bcc615e0ed4db482d0a5038e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdeb91ba24775116e419a0dde265e0ac" id="r_abdeb91ba24775116e419a0dde265e0ac"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </td></tr>
+<tr class="memitem:abdeb91ba24775116e419a0dde265e0ac"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#abdeb91ba24775116e419a0dde265e0ac">EigenOpt::simplex::minimize</a> (const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
+<tr class="memdesc:abdeb91ba24775116e419a0dde265e0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve an inequality-constrained linear optimization problem.  <br /></td></tr>
+<tr class="separator:abdeb91ba24775116e419a0dde265e0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c72b5614b5c2f52f5eeec28c64e1c42" id="r_a8c72b5614b5c2f52f5eeec28c64e1c42"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 , class D5 , class D6 &gt; </td></tr>
 <tr class="memitem:a8c72b5614b5c2f52f5eeec28c64e1c42"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#a8c72b5614b5c2f52f5eeec28c64e1c42">EigenOpt::simplex::maximize</a> (const Eigen::MatrixBase&lt; D1 &gt; &amp;f, const Eigen::MatrixBase&lt; D2 &gt; &amp;A, const Eigen::MatrixBase&lt; D3 &gt; &amp;b, const Eigen::MatrixBase&lt; D4 &gt; &amp;C, const Eigen::MatrixBase&lt; D5 &gt; &amp;d, Eigen::DenseBase&lt; D6 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
 <tr class="memdesc:a8c72b5614b5c2f52f5eeec28c64e1c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve a constrained linear optimization problem.  <br /></td></tr>
 <tr class="separator:a8c72b5614b5c2f52f5eeec28c64e1c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a282597195ac57a948f827d5ef3881428" id="r_a282597195ac57a948f827d5ef3881428"><td class="memTemplParams" colspan="2">template&lt;class Scalar , class D1 , class D2 , class D3 , class D4 &gt; </td></tr>
+<tr class="memitem:a282597195ac57a948f827d5ef3881428"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceEigenOpt_1_1simplex.html#a282597195ac57a948f827d5ef3881428">EigenOpt::simplex::maximize</a> (const Eigen::DenseBase&lt; D1 &gt; &amp;f, const Eigen::DenseBase&lt; D2 &gt; &amp;C, const Eigen::DenseBase&lt; D3 &gt; &amp;d, Eigen::DenseBase&lt; D4 &gt; &amp;x, std::string &amp;halt_reason, const Scalar &amp;small_number, const Scalar &amp;large_number=-1)</td></tr>
+<tr class="memdesc:a282597195ac57a948f827d5ef3881428"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve an inequality-constrained linear optimization problem.  <br /></td></tr>
+<tr class="separator:a282597195ac57a948f827d5ef3881428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

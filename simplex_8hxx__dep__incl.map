@@ -1,11 +1,15 @@
 <map id="include/EigenOpt/simplex.hxx" name="include/EigenOpt/simplex.hxx">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,221,31"/>
-<area shape="rect" id="Node000002" href="$simplex_8hpp.html" title=" " alt="" coords="5,79,221,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,44,116,79,111,79,111,44"/>
-<area shape="rect" id="Node000003" href="$quadratic__programming_8hxx.html" title=" " alt="" coords="15,152,212,192"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="116,118,116,152,111,152,111,118"/>
-<area shape="rect" id="Node000004" href="$quadratic__programming_8hpp.html" title=" " alt="" coords="15,240,212,280"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="116,206,116,240,111,240,111,206"/>
-<area shape="rect" id="Node000005" href="$readme__example_8cpp.html" title=" " alt="" coords="20,328,207,353"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="116,294,116,328,111,328,111,294"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="211,5,427,31"/>
+<area shape="rect" id="Node000002" href="$simplex_8hpp.html" title=" " alt="" coords="211,79,427,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="321,44,321,79,316,79,316,44"/>
+<area shape="rect" id="Node000003" href="$quadratic__programming_8hxx.html" title=" " alt="" coords="112,152,309,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="293,114,238,154,235,150,290,110"/>
+<area shape="rect" id="Node000007" href="$simplex__example_8cpp.html" title="Example program showing how to use the Simplex solver." alt="" coords="334,159,522,185"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="348,110,413,157,410,161,345,114"/>
+<area shape="rect" id="Node000004" href="$quadratic__programming_8hpp.html" title=" " alt="" coords="112,240,309,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="213,206,213,240,208,240,208,206"/>
+<area shape="rect" id="Node000005" href="$example__pixel__robot_8cpp.html" title="Example program showing how to use the QP solver in a robot control problem." alt="" coords="5,328,213,353"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="177,291,126,330,123,326,174,287"/>
+<area shape="rect" id="Node000006" href="$qp__example_8cpp.html" title="Example program showing how to use the Quadratic Programming solver." alt="" coords="237,328,389,353"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="248,287,300,326,296,330,245,291"/>
 </map>

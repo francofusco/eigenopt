@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -118,128 +126,128 @@ $(document).ready(function(){initNavTree('simplex__internal_8hpp_source.html',''
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespaceEigenOpt_1_1simplex_1_1internal.html">   11</a></span><span class="keyword">namespace </span>internal {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html">   26</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html">VariableDomain</a> {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a793f7e97f547f4eb171a923ead43887f">   27</a></span>  <span class="keywordtype">bool</span> <a class="code hl_variable" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a793f7e97f547f4eb171a923ead43887f">non_negative</a> = <span class="keyword">false</span>; </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a552e541b1ad0cac78f5aff01aad1ecc5">   28</a></span>  <span class="keywordtype">bool</span> <a class="code hl_variable" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a552e541b1ad0cac78f5aff01aad1ecc5">non_positive</a> = <span class="keyword">false</span>; </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#afc22f05597db20464aa88b3b51f2348f">   29</a></span>  <span class="keywordtype">int</span> <a class="code hl_variable" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#afc22f05597db20464aa88b3b51f2348f">idx</a> = -1; </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html">   27</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html">VariableDomain</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a793f7e97f547f4eb171a923ead43887f">   28</a></span>  <span class="keywordtype">bool</span> <a class="code hl_variable" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a793f7e97f547f4eb171a923ead43887f">non_negative</a> = <span class="keyword">false</span>; </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a552e541b1ad0cac78f5aff01aad1ecc5">   29</a></span>  <span class="keywordtype">bool</span> <a class="code hl_variable" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a552e541b1ad0cac78f5aff01aad1ecc5">non_positive</a> = <span class="keyword">false</span>; </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#afc22f05597db20464aa88b3b51f2348f">   30</a></span>  <span class="keywordtype">int</span> <a class="code hl_variable" href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#afc22f05597db20464aa88b3b51f2348f">idx</a> = -1; </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>};</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a2d2a61a7c4ba3c3807109a931ed1aee3">deduce_variables_domains</a>(</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; C,</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,1&gt;&amp; d,</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  std::vector&lt;VariableDomain&gt;&amp; domains,</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  std::string&amp; halt_reason</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a2d2a61a7c4ba3c3807109a931ed1aee3">deduce_variables_domains</a>(</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; C,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,1&gt;&amp; d,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  std::vector&lt;VariableDomain&gt;&amp; domains,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  std::string&amp; halt_reason</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt; <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">transformation_matrix_from_domains</a>(</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  <span class="keyword">const</span> std::vector&lt;VariableDomain&gt;&amp; domains</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7c008fc16c1272793272a84be35eb851">transformation_matrix</a>(</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; C,</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,1&gt;&amp; d,</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  Eigen::Matrix&lt;Scalar, Eigen::Dynamic, Eigen::Dynamic&gt;&amp; T,</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  std::string&amp; halt_reason</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>);</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt; <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">transformation_matrix_from_domains</a>(</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <span class="keyword">const</span> std::vector&lt;VariableDomain&gt;&amp; domains</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7c008fc16c1272793272a84be35eb851">transformation_matrix</a>(</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; C,</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,1&gt;&amp; d,</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  Eigen::Matrix&lt;Scalar, Eigen::Dynamic, Eigen::Dynamic&gt;&amp; T,</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  std::string&amp; halt_reason</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>);</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7d948c25bc5bbe0d1fac2a38b2650d62">create_tableau</a>(</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar, Eigen::Dynamic, Eigen::Dynamic&gt;&amp; C,</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar, Eigen::Dynamic, 1&gt;&amp; d,</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  Eigen::Matrix&lt;Scalar, Eigen::Dynamic, Eigen::Dynamic&gt;&amp; tableau,</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  std::vector&lt;int&gt;&amp; basic_variables</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>);</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#af74b70ee8a196322b4a706ab3236293d">eliminate_objective</a>(</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  Eigen::Matrix&lt;Scalar, Eigen::Dynamic, Eigen::Dynamic&gt;&amp; tableau,</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  <span class="keyword">const</span> std::vector&lt;int&gt;&amp; basic_variables</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a2651870dbc8202ea6781c632c9a8627f">pivot</a>(</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>  Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; tableau,</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>  <span class="keywordtype">int</span> entering_variable,</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  <span class="keywordtype">int</span> leaving_variable</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>);</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a459f93236e6ddd0f39d47a76a6de8219">simplex</a>(</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>  Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; tableau,</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>  std::vector&lt;int&gt;&amp; basic_variables,</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>  std::string&amp; halt_reason</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>);</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#aacd7c2b6a96c6f05e574235a88c96b45">two_steps_method</a>(</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,1&gt;&amp; objective,</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; tableau,</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>  std::vector&lt;int&gt;&amp; basic_variables,</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> na,</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>  std::string&amp; halt_reason</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>);</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#ad865f397ee5b5e611f4ea3b56ebf3dae">penalty_method</a>(</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,1&gt;&amp; objective,</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>  Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; tableau,</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>  std::vector&lt;int&gt;&amp; basic_variables,</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> na,</div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>  <span class="keyword">const</span> Scalar&amp; large_number,</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>  std::string&amp; halt_reason</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>);</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>} <span class="comment">// namespace internal</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7d948c25bc5bbe0d1fac2a38b2650d62">create_tableau</a>(</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar, Eigen::Dynamic, Eigen::Dynamic&gt;&amp; C,</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar, Eigen::Dynamic, 1&gt;&amp; d,</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  Eigen::Matrix&lt;Scalar, Eigen::Dynamic, Eigen::Dynamic&gt;&amp; tableau,</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  std::vector&lt;int&gt;&amp; basic_variables</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#af74b70ee8a196322b4a706ab3236293d">eliminate_objective</a>(</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  Eigen::Matrix&lt;Scalar, Eigen::Dynamic, Eigen::Dynamic&gt;&amp; tableau,</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="keyword">const</span> std::vector&lt;int&gt;&amp; basic_variables</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="keywordtype">void</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a2651870dbc8202ea6781c632c9a8627f">pivot</a>(</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>  Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; tableau,</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  <span class="keywordtype">int</span> entering_variable,</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  <span class="keywordtype">int</span> leaving_variable</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#a459f93236e6ddd0f39d47a76a6de8219">simplex</a>(</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>  Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; tableau,</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>  std::vector&lt;int&gt;&amp; basic_variables,</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>  std::string&amp; halt_reason</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#aacd7c2b6a96c6f05e574235a88c96b45">two_steps_method</a>(</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,1&gt;&amp; objective,</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>  Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; tableau,</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>  std::vector&lt;int&gt;&amp; basic_variables,</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> na,</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>  std::string&amp; halt_reason</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>);</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Scalar&gt;</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceEigenOpt_1_1simplex_1_1internal.html#ad865f397ee5b5e611f4ea3b56ebf3dae">penalty_method</a>(</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>  <span class="keyword">const</span> Eigen::Matrix&lt;Scalar,Eigen::Dynamic,1&gt;&amp; objective,</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>  Eigen::Matrix&lt;Scalar,Eigen::Dynamic,Eigen::Dynamic&gt;&amp; tableau,</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>  std::vector&lt;int&gt;&amp; basic_variables,</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> na,</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>  <span class="keyword">const</span> Scalar&amp; small_number,</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>  <span class="keyword">const</span> Scalar&amp; large_number,</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>  std::string&amp; halt_reason</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>);</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span> </div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>} <span class="comment">// namespace internal</span></div>
 </div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span> </div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>} <span class="comment">// namespace simplex</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>} <span class="comment">// namespace EigenOpt</span></div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span> </div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span><span class="preprocessor">#include &quot;<a class="code" href="simplex__internal_8hxx.html">simplex_internal.hxx</a>&quot;</span></div>
-<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a023f64ee8724d3702a37a25cbac476e2"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">EigenOpt::simplex::internal::transformation_matrix_from_domains</a></div><div class="ttdeci">Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; transformation_matrix_from_domains(const std::vector&lt; VariableDomain &gt; &amp;domains)</div><div class="ttdoc">Calculate a transformation matrix so that x=T*w, w&gt;=0.</div><div class="ttdef"><b>Definition</b> simplex_internal.hxx:83</div></div>
-<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a2651870dbc8202ea6781c632c9a8627f"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a2651870dbc8202ea6781c632c9a8627f">EigenOpt::simplex::internal::pivot</a></div><div class="ttdeci">void pivot(Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, int entering_variable, int leaving_variable)</div><div class="ttdoc">Perform a pivot operation between a basic and a non-basic variable.</div><div class="ttdef"><b>Definition</b> simplex_internal.hxx:153</div></div>
-<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a2d2a61a7c4ba3c3807109a931ed1aee3"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a2d2a61a7c4ba3c3807109a931ed1aee3">EigenOpt::simplex::internal::deduce_variables_domains</a></div><div class="ttdeci">bool deduce_variables_domains(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;C, const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;d, const Scalar &amp;small_number, std::vector&lt; VariableDomain &gt; &amp;domains, std::string &amp;halt_reason)</div><div class="ttdoc">Given a set of inequality constraints, deduce the domain of the decision variables.</div><div class="ttdef"><b>Definition</b> simplex_internal.hxx:14</div></div>
-<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a459f93236e6ddd0f39d47a76a6de8219"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a459f93236e6ddd0f39d47a76a6de8219">EigenOpt::simplex::internal::simplex</a></div><div class="ttdeci">bool simplex(Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, std::vector&lt; int &gt; &amp;basic_variables, const Scalar &amp;small_number, std::string &amp;halt_reason)</div><div class="ttdoc">Perform successive pivot operations until a termination condition is met.</div><div class="ttdef"><b>Definition</b> simplex_internal.hxx:175</div></div>
-<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a7c008fc16c1272793272a84be35eb851"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7c008fc16c1272793272a84be35eb851">EigenOpt::simplex::internal::transformation_matrix</a></div><div class="ttdeci">bool transformation_matrix(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;C, const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;d, const Scalar &amp;small_number, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;T, std::string &amp;halt_reason)</div><div class="ttdoc">Calculate a transformation matrix so that x=T*w, w&gt;=0.</div><div class="ttdef"><b>Definition</b> simplex_internal.hxx:130</div></div>
-<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a7d948c25bc5bbe0d1fac2a38b2650d62"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7d948c25bc5bbe0d1fac2a38b2650d62">EigenOpt::simplex::internal::create_tableau</a></div><div class="ttdeci">void create_tableau(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;C, const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;d, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, std::vector&lt; int &gt; &amp;basic_variables)</div><div class="ttdoc">Create a Simplex Tableau given a set of inequality constraints.</div><div class="ttdef"><b>Definition</b> simplex_internal.hxx:234</div></div>
-<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_aacd7c2b6a96c6f05e574235a88c96b45"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#aacd7c2b6a96c6f05e574235a88c96b45">EigenOpt::simplex::internal::two_steps_method</a></div><div class="ttdeci">bool two_steps_method(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;objective, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, std::vector&lt; int &gt; &amp;basic_variables, unsigned int na, const Scalar &amp;small_number, std::string &amp;halt_reason)</div><div class="ttdoc">Solve a minimization problem using the two-steps Simplex method.</div><div class="ttdef"><b>Definition</b> simplex_internal.hxx:302</div></div>
-<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_ad865f397ee5b5e611f4ea3b56ebf3dae"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#ad865f397ee5b5e611f4ea3b56ebf3dae">EigenOpt::simplex::internal::penalty_method</a></div><div class="ttdeci">bool penalty_method(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;objective, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, std::vector&lt; int &gt; &amp;basic_variables, unsigned int na, const Scalar &amp;small_number, const Scalar &amp;large_number, std::string &amp;halt_reason)</div><div class="ttdoc">Solve a minimization problem using the penalty Simplex method.</div><div class="ttdef"><b>Definition</b> simplex_internal.hxx:428</div></div>
-<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_af74b70ee8a196322b4a706ab3236293d"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#af74b70ee8a196322b4a706ab3236293d">EigenOpt::simplex::internal::eliminate_objective</a></div><div class="ttdeci">void eliminate_objective(Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, const std::vector&lt; int &gt; &amp;basic_variables)</div><div class="ttdoc">Use Gaussian elimination on the last row of the tableau.</div><div class="ttdef"><b>Definition</b> simplex_internal.hxx:287</div></div>
-<div class="ttc" id="anamespaceEigenOpt_html"><div class="ttname"><a href="namespaceEigenOpt.html">EigenOpt</a></div><div class="ttdef"><b>Definition</b> kernel_projection.hpp:6</div></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>} <span class="comment">// namespace simplex</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>} <span class="comment">// namespace EigenOpt</span></div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span> </div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span><span class="preprocessor">#include &quot;<a class="code" href="simplex__internal_8hxx.html">simplex_internal.hxx</a>&quot;</span></div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a023f64ee8724d3702a37a25cbac476e2"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a023f64ee8724d3702a37a25cbac476e2">EigenOpt::simplex::internal::transformation_matrix_from_domains</a></div><div class="ttdeci">Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; transformation_matrix_from_domains(const std::vector&lt; VariableDomain &gt; &amp;domains)</div><div class="ttdoc">Calculate a transformation matrix so that , .</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hxx_source.html#l00083">simplex_internal.hxx:83</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a2651870dbc8202ea6781c632c9a8627f"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a2651870dbc8202ea6781c632c9a8627f">EigenOpt::simplex::internal::pivot</a></div><div class="ttdeci">void pivot(Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, int entering_variable, int leaving_variable)</div><div class="ttdoc">Perform a pivot operation between a basic and a non-basic variable.</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hxx_source.html#l00153">simplex_internal.hxx:153</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a2d2a61a7c4ba3c3807109a931ed1aee3"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a2d2a61a7c4ba3c3807109a931ed1aee3">EigenOpt::simplex::internal::deduce_variables_domains</a></div><div class="ttdeci">bool deduce_variables_domains(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;C, const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;d, const Scalar &amp;small_number, std::vector&lt; VariableDomain &gt; &amp;domains, std::string &amp;halt_reason)</div><div class="ttdoc">Given a set of inequality constraints, deduce the domain of the decision variables.</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hxx_source.html#l00014">simplex_internal.hxx:14</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a459f93236e6ddd0f39d47a76a6de8219"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a459f93236e6ddd0f39d47a76a6de8219">EigenOpt::simplex::internal::simplex</a></div><div class="ttdeci">bool simplex(Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, std::vector&lt; int &gt; &amp;basic_variables, const Scalar &amp;small_number, std::string &amp;halt_reason)</div><div class="ttdoc">Perform successive pivot operations until a termination condition is met.</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hxx_source.html#l00175">simplex_internal.hxx:175</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a7c008fc16c1272793272a84be35eb851"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7c008fc16c1272793272a84be35eb851">EigenOpt::simplex::internal::transformation_matrix</a></div><div class="ttdeci">bool transformation_matrix(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;C, const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;d, const Scalar &amp;small_number, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;T, std::string &amp;halt_reason)</div><div class="ttdoc">Calculate a transformation matrix so that , .</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hxx_source.html#l00130">simplex_internal.hxx:130</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_a7d948c25bc5bbe0d1fac2a38b2650d62"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#a7d948c25bc5bbe0d1fac2a38b2650d62">EigenOpt::simplex::internal::create_tableau</a></div><div class="ttdeci">void create_tableau(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;C, const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;d, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, std::vector&lt; int &gt; &amp;basic_variables)</div><div class="ttdoc">Create a Simplex Tableau given a set of inequality constraints.</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hxx_source.html#l00234">simplex_internal.hxx:234</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_aacd7c2b6a96c6f05e574235a88c96b45"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#aacd7c2b6a96c6f05e574235a88c96b45">EigenOpt::simplex::internal::two_steps_method</a></div><div class="ttdeci">bool two_steps_method(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;objective, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, std::vector&lt; int &gt; &amp;basic_variables, unsigned int na, const Scalar &amp;small_number, std::string &amp;halt_reason)</div><div class="ttdoc">Solve a minimization problem using the two-steps Simplex method.</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hxx_source.html#l00302">simplex_internal.hxx:302</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_ad865f397ee5b5e611f4ea3b56ebf3dae"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#ad865f397ee5b5e611f4ea3b56ebf3dae">EigenOpt::simplex::internal::penalty_method</a></div><div class="ttdeci">bool penalty_method(const Eigen::Matrix&lt; Scalar, Eigen::Dynamic, 1 &gt; &amp;objective, Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, std::vector&lt; int &gt; &amp;basic_variables, unsigned int na, const Scalar &amp;small_number, const Scalar &amp;large_number, std::string &amp;halt_reason)</div><div class="ttdoc">Solve a minimization problem using the penalty Simplex method.</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hxx_source.html#l00428">simplex_internal.hxx:428</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_1_1simplex_1_1internal_html_af74b70ee8a196322b4a706ab3236293d"><div class="ttname"><a href="namespaceEigenOpt_1_1simplex_1_1internal.html#af74b70ee8a196322b4a706ab3236293d">EigenOpt::simplex::internal::eliminate_objective</a></div><div class="ttdeci">void eliminate_objective(Eigen::Matrix&lt; Scalar, Eigen::Dynamic, Eigen::Dynamic &gt; &amp;tableau, const std::vector&lt; int &gt; &amp;basic_variables)</div><div class="ttdoc">Use Gaussian elimination on the last row of the tableau.</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hxx_source.html#l00287">simplex_internal.hxx:287</a></div></div>
+<div class="ttc" id="anamespaceEigenOpt_html"><div class="ttname"><a href="namespaceEigenOpt.html">EigenOpt</a></div><div class="ttdoc">Main namespace of this project, containing all utilities.</div><div class="ttdef"><b>Definition</b> <a href="kernel__projection_8hpp_source.html#l00006">kernel_projection.hpp:6</a></div></div>
 <div class="ttc" id="asimplex__internal_8hxx_html"><div class="ttname"><a href="simplex__internal_8hxx.html">simplex_internal.hxx</a></div></div>
-<div class="ttc" id="astructEigenOpt_1_1simplex_1_1internal_1_1VariableDomain_html"><div class="ttname"><a href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html">EigenOpt::simplex::internal::VariableDomain</a></div><div class="ttdoc">Auxiliay structure to store the domain of a variable.</div><div class="ttdef"><b>Definition</b> simplex_internal.hpp:26</div></div>
-<div class="ttc" id="astructEigenOpt_1_1simplex_1_1internal_1_1VariableDomain_html_a552e541b1ad0cac78f5aff01aad1ecc5"><div class="ttname"><a href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a552e541b1ad0cac78f5aff01aad1ecc5">EigenOpt::simplex::internal::VariableDomain::non_positive</a></div><div class="ttdeci">bool non_positive</div><div class="ttdoc">If true, x&lt;=0.</div><div class="ttdef"><b>Definition</b> simplex_internal.hpp:28</div></div>
-<div class="ttc" id="astructEigenOpt_1_1simplex_1_1internal_1_1VariableDomain_html_a793f7e97f547f4eb171a923ead43887f"><div class="ttname"><a href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a793f7e97f547f4eb171a923ead43887f">EigenOpt::simplex::internal::VariableDomain::non_negative</a></div><div class="ttdeci">bool non_negative</div><div class="ttdoc">If true, x&gt;=0.</div><div class="ttdef"><b>Definition</b> simplex_internal.hpp:27</div></div>
-<div class="ttc" id="astructEigenOpt_1_1simplex_1_1internal_1_1VariableDomain_html_afc22f05597db20464aa88b3b51f2348f"><div class="ttname"><a href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#afc22f05597db20464aa88b3b51f2348f">EigenOpt::simplex::internal::VariableDomain::idx</a></div><div class="ttdeci">int idx</div><div class="ttdoc">Which constraint (if any) implies the given domain.</div><div class="ttdef"><b>Definition</b> simplex_internal.hpp:29</div></div>
+<div class="ttc" id="astructEigenOpt_1_1simplex_1_1internal_1_1VariableDomain_html"><div class="ttname"><a href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html">EigenOpt::simplex::internal::VariableDomain</a></div><div class="ttdoc">Auxiliay structure to store the domain of a variable.</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hpp_source.html#l00027">simplex_internal.hpp:27</a></div></div>
+<div class="ttc" id="astructEigenOpt_1_1simplex_1_1internal_1_1VariableDomain_html_a552e541b1ad0cac78f5aff01aad1ecc5"><div class="ttname"><a href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a552e541b1ad0cac78f5aff01aad1ecc5">EigenOpt::simplex::internal::VariableDomain::non_positive</a></div><div class="ttdeci">bool non_positive</div><div class="ttdoc">If true, .</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hpp_source.html#l00029">simplex_internal.hpp:29</a></div></div>
+<div class="ttc" id="astructEigenOpt_1_1simplex_1_1internal_1_1VariableDomain_html_a793f7e97f547f4eb171a923ead43887f"><div class="ttname"><a href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#a793f7e97f547f4eb171a923ead43887f">EigenOpt::simplex::internal::VariableDomain::non_negative</a></div><div class="ttdeci">bool non_negative</div><div class="ttdoc">If true, .</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hpp_source.html#l00028">simplex_internal.hpp:28</a></div></div>
+<div class="ttc" id="astructEigenOpt_1_1simplex_1_1internal_1_1VariableDomain_html_afc22f05597db20464aa88b3b51f2348f"><div class="ttname"><a href="structEigenOpt_1_1simplex_1_1internal_1_1VariableDomain.html#afc22f05597db20464aa88b3b51f2348f">EigenOpt::simplex::internal::VariableDomain::idx</a></div><div class="ttdeci">int idx</div><div class="ttdoc">Which constraint (if any) implies the given domain.</div><div class="ttdef"><b>Definition</b> <a href="simplex__internal_8hpp_source.html#l00030">simplex_internal.hpp:30</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

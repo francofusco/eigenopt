@@ -21,6 +21,14 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js"],
   jax: ["input/TeX","output/HTML-CSS"],
 });
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol{#1}}",1],
+    }
+    // packages: {'[+]': ['mathtools']}
+  }
+});
 </script>
 <script type="text/javascript" async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -106,13 +114,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="quadratic__programming__debug_8hpp__dep__incl.png" border="0" usemap="#ainclude_2EigenOpt_2quadratic__programming__debug_8hppdep" alt=""/></div>
 <map name="ainclude_2EigenOpt_2quadratic__programming__debug_8hppdep" id="ainclude_2EigenOpt_2quadratic__programming__debug_8hppdep">
-<area shape="rect" title=" " alt="" coords="5,5,203,45"/>
-<area shape="rect" href="quadratic__programming_8hxx.html" title=" " alt="" coords="5,93,203,133"/>
-<area shape="poly" title=" " alt="" coords="107,59,107,93,101,93,101,59"/>
-<area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="5,181,203,221"/>
-<area shape="poly" title=" " alt="" coords="107,147,107,181,101,181,101,147"/>
-<area shape="rect" href="readme__example_8cpp.html" title=" " alt="" coords="11,269,197,295"/>
-<area shape="poly" title=" " alt="" coords="107,235,107,269,101,269,101,235"/>
+<area shape="rect" title=" " alt="" coords="112,5,309,45"/>
+<area shape="rect" href="quadratic__programming_8hxx.html" title=" " alt="" coords="112,93,309,133"/>
+<area shape="poly" title=" " alt="" coords="213,59,213,93,208,93,208,59"/>
+<area shape="rect" href="quadratic__programming_8hpp.html" title=" " alt="" coords="112,181,309,221"/>
+<area shape="poly" title=" " alt="" coords="213,147,213,181,208,181,208,147"/>
+<area shape="rect" href="example__pixel__robot_8cpp.html" title="Example program showing how to use the QP solver in a robot control problem." alt="" coords="5,269,213,295"/>
+<area shape="poly" title=" " alt="" coords="177,232,126,271,123,267,174,228"/>
+<area shape="rect" href="qp__example_8cpp.html" title="Example program showing how to use the Quadratic Programming solver." alt="" coords="237,269,389,295"/>
+<area shape="poly" title=" " alt="" coords="248,228,300,267,296,271,245,232"/>
 </map>
 </div>
 </div>
@@ -120,6 +130,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a851e9ca1aa90f76d3d09e4f26040567f" id="r_a851e9ca1aa90f76d3d09e4f26040567f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quadratic__programming__debug_8hpp.html#a851e9ca1aa90f76d3d09e4f26040567f">EigenOpt_QUADPROG_HIGHVIS_MSG</a>(x)&#160;&#160;&#160;{std::cout &lt;&lt; &quot;\033[33m[DBG] &quot; &lt;&lt; x &lt;&lt; &quot;\033[m&quot; &lt;&lt; std::endl;}</td></tr>
+<tr class="separator:a851e9ca1aa90f76d3d09e4f26040567f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaea6f79d5d2f8998a21b9ee836cfcaf" id="r_adaea6f79d5d2f8998a21b9ee836cfcaf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quadratic__programming__debug_8hpp.html#adaea6f79d5d2f8998a21b9ee836cfcaf">EigenOpt_QUADPROG_DBG</a>(x)&#160;&#160;&#160;;</td></tr>
 <tr class="separator:adaea6f79d5d2f8998a21b9ee836cfcaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef85e720a0df4585ea823ce82ef9e3ea" id="r_aef85e720a0df4585ea823ce82ef9e3ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quadratic__programming__debug_8hpp.html#aef85e720a0df4585ea823ce82ef9e3ea">EigenOpt_QUADPROG_BREAK</a>&#160;&#160;&#160;;</td></tr>
@@ -138,6 +150,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="quadratic__programming__debug_8hpp_source.html#l00052">52</a> of file <a class="el" href="quadratic__programming__debug_8hpp_source.html">quadratic_programming_debug.hpp</a>.</p>
+
 </div>
 </div>
 <a id="adaea6f79d5d2f8998a21b9ee836cfcaf" name="adaea6f79d5d2f8998a21b9ee836cfcaf"></a>
@@ -155,6 +169,28 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming__debug_8hpp_source.html#l00051">51</a> of file <a class="el" href="quadratic__programming__debug_8hpp_source.html">quadratic_programming_debug.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a851e9ca1aa90f76d3d09e4f26040567f" name="a851e9ca1aa90f76d3d09e4f26040567f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a851e9ca1aa90f76d3d09e4f26040567f">&#9670;&#160;</a></span>EigenOpt_QUADPROG_HIGHVIS_MSG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EigenOpt_QUADPROG_HIGHVIS_MSG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;{std::cout &lt;&lt; &quot;\033[33m[DBG] &quot; &lt;&lt; x &lt;&lt; &quot;\033[m&quot; &lt;&lt; std::endl;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="quadratic__programming__debug_8hpp_source.html#l00006">6</a> of file <a class="el" href="quadratic__programming__debug_8hpp_source.html">quadratic_programming_debug.hpp</a>.</p>
 
 </div>
 </div>
