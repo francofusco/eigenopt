@@ -49,6 +49,12 @@ target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_17)
 foreach(EXAMPLE IN ITEMS simplex_example qp_example)
   add_executable(${EXAMPLE} src/${EXAMPLE}.cpp)
   target_link_libraries(${EXAMPLE} PRIVATE ${PROJECT_NAME})
+
+  # Remove issues related to the size of the compiled code.
+  if(WIN32)
+    target_compile_options(${EXAMPLE} PRIVATE -O2 -g0 -flto)
+    target_link_options(${EXAMPLE} PRIVATE -flto)
+  endif()
 endforeach()
 
 # If piksel has been downloaded, compile the robot example.
